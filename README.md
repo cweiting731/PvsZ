@@ -1,8 +1,8 @@
 # PvsZ
 ## 使用版本
-Unity 6000.0.30f1
-3D (Built-In Render Pipeline)
-Cinemachine 3.1.2
+* Unity 6000.0.30f1
+* 3D (Built-In Render Pipeline)
+* Cinemachine 3.1.2
 
 ## 使用 Assets
 * Zombie (https://assetstore.unity.com/packages/3d/characters/humanoids/zombie-30232)
