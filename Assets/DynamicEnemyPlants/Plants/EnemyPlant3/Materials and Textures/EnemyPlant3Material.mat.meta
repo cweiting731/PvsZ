@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 772851ede4f97c04f996125e2e13a5db
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136355
+  packageName: Dynamic Enemy Plants
+  packageVersion: 1.1
+  assetPath: Assets/DynamicEnemyPlants/Plants/EnemyPlant3/Materials and Textures/EnemyPlant3Material.mat
+  uploadId: 297992
