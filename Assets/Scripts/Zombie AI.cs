@@ -18,11 +18,8 @@ public class ZombieController : MonoBehaviour
     {
         if (player != null)
         {
-            Vector3 direction = (player.position - transform.position).normalized;
-
+            Vector3 direction = new Vector3(0, 0, 1);
             transform.position += direction * speed * Time.deltaTime;
-
-            transform.LookAt(player);
         }
     }
 }
