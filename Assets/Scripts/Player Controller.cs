@@ -57,5 +57,9 @@ public class PlayerController : MonoBehaviour
         rb.MovePosition(newPosition);
 
         #endregion
+
+        
+        transform.rotation = Quaternion.Euler(0, followTarget.rotation.eulerAngles.y, 0);
+        followTarget.localEulerAngles = new Vector3(angles.x, 0, 0);
     }
 }
