@@ -231,6 +231,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9218221822711795723, guid: 1cd4a9e17c67b9641aa507f86d19c7df, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6034918400631058024, guid: 1cd4a9e17c67b9641aa507f86d19c7df, type: 3}
     m_RemovedGameObjects: []
@@ -484,7 +488,7 @@ GameObject:
   - component: {fileID: 945876070}
   m_Layer: 0
   m_Name: Zombies
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -790,6 +794,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zombie1
       objectReference: {fileID: 0}
+    - target: {fileID: 4493914613880827488, guid: 6dc4cf4496348884d8ee27743ae38562, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -850,9 +858,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1732554619}
   - component: {fileID: 1732554620}
-  - component: {fileID: 1732554623}
   - component: {fileID: 1732554622}
-  - component: {fileID: 1732554621}
+  - component: {fileID: 1732554624}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -884,7 +891,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1732554618}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da7cb5c8b62ff464c88c537145319ba9, type: 3}
   m_Name: 
@@ -893,27 +900,6 @@ MonoBehaviour:
   moveSpeed: 1
   rotationSpeed: 300
   followTarget: {fileID: 1710403941}
---- !u!135 &1732554621
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1732554618}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.36879736
-  m_Center: {x: 0, y: 0.91879743, z: 0}
 --- !u!54 &1732554622
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -941,21 +927,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 32
   m_CollisionDetection: 0
---- !u!114 &1732554623
-MonoBehaviour:
+--- !u!136 &1732554624
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1732554618}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b199b8495302db4583e05eb0c8f5ecf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  rotationSpeed: 700
-  followTarget: {fileID: 1710403941}
+  serializedVersion: 2
+  m_Radius: 0.48
+  m_Height: 1.1
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.06, z: 0.07}
 --- !u!1 &1908187994 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4493914613880827488, guid: 6dc4cf4496348884d8ee27743ae38562, type: 3}
@@ -1000,10 +994,10 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 1
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &1908187999
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1023,8 +1017,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.5141854, y: 1.8812493, z: 0.61377525}
-  m_Center: {x: 0, y: 0.9145301, z: 0}
+  m_Size: {x: 1.5, y: 1.85, z: 0.45}
+  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!4 &1908188001 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 578376449398627443, guid: 6dc4cf4496348884d8ee27743ae38562, type: 3}
