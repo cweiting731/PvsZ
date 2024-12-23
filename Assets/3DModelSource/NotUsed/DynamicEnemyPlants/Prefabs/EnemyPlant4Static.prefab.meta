@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: ca8d63ba84ffe104a89a977a9b384ac9
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136355
+  packageName: Dynamic Enemy Plants
+  packageVersion: 1.1
+  assetPath: Assets/DynamicEnemyPlants/Prefabs/EnemyPlant4Static.prefab
+  uploadId: 297992

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b9f1d00ee0901a745aef6de8234e0a5e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136355
+  packageName: Dynamic Enemy Plants
+  packageVersion: 1.1
+  assetPath: Assets/DynamicEnemyPlants/Demo/Animator Controllers/EnemyPlant2Small.controller
+  uploadId: 297992

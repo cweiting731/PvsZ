@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: c50d77affeb31e14c9c062c282f13fc8
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136355
+  packageName: Dynamic Enemy Plants
+  packageVersion: 1.1
+  assetPath: Assets/DynamicEnemyPlants/Plants/Particles/GasParticle.mat
+  uploadId: 297992
