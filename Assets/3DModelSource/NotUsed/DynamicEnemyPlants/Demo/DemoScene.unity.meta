@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: de2be34876e3b9c40bd8e555bd8e82a3
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136355
+  packageName: Dynamic Enemy Plants
+  packageVersion: 1.1
+  assetPath: Assets/DynamicEnemyPlants/Demo/DemoScene.unity
+  uploadId: 297992
