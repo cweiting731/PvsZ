@@ -1,3 +1,4 @@
+using System.Threading;
 using UnityEngine;
 
 public class ZombieController : MonoBehaviour
@@ -6,10 +7,16 @@ public class ZombieController : MonoBehaviour
     public float originalHealth;
     public Animator animator;
     public Rigidbody rigidbody;
+    public float destroyDelay;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private float speed;
     private float health;
     private State state;
+    private Vector3 moveDirection = new Vector3(0, 0, 1);
+    private bool isDead = false;
+
+    //private float TEST_TIMER;
+    //private float TEST_INTERVAL = 10f;
 
     private enum State
     {
@@ -23,6 +30,7 @@ public class ZombieController : MonoBehaviour
         speed = originalSpeed;
         health = originalHealth;
         SetState(State.Walk);
+        //TEST_TIMER = TEST_INTERVAL;
     }
 
     // Update is called once per frame
@@ -30,9 +38,13 @@ public class ZombieController : MonoBehaviour
     {
         if (state == State.Walk)
         {
-            Vector3 direction = new Vector3(0, 0, 1);
-            transform.position += direction * speed * Time.deltaTime;
+            transform.position += moveDirection * speed * Time.deltaTime;
         }
+        //TEST_TIMER -= Time.deltaTime;
+        //if (TEST_TIMER <= 0f)
+        //{
+        //    Die();
+        //}
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -47,7 +59,7 @@ public class ZombieController : MonoBehaviour
         }
         if (collision.gameObject.tag != "Ground")
         {
-            Debug.Log("�I���}�l: " + collision.gameObject.name);
+            Debug.Log("OnCollisionEnter: " + collision.gameObject.name);
             speed = 0;
             SetState(State.Attack);
         }
@@ -64,7 +76,7 @@ public class ZombieController : MonoBehaviour
     {
         if (collision.gameObject.tag != "Ground")
         {
-            Debug.Log("�I������: " + collision.gameObject.name);
+            Debug.Log("OnCollisionExit: " + collision.gameObject.name);
             speed = originalSpeed;
             SetState(State.Walk);
         }
@@ -87,5 +99,34 @@ public class ZombieController : MonoBehaviour
                 break;
         }
         Debug.Log("Zombie State: " + state.ToString());
+    }
+
+    public void TakeDamage(float damage)
+    {
+        if (isDead) return;
+        health -= damage;
+
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Frozen(float percent)
+    {
+        speed *= percent;
+    }
+
+    public void AntiFrozen()
+    {
+        speed = originalSpeed;
+    }
+
+    private void Die()
+    {
+        isDead = true;
+        animator.SetTrigger("Die");
+        speed = 0;
+        Destroy(gameObject, destroyDelay);
     }
 }

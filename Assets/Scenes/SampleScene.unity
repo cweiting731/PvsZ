@@ -981,6 +981,7 @@ MonoBehaviour:
   originalHealth: 100
   animator: {fileID: 1908188003}
   rigidbody: {fileID: 1908187998}
+  destroyDelay: 3
 --- !u!54 &1908187998
 Rigidbody:
   m_ObjectHideFlags: 0
