@@ -10,6 +10,7 @@ public class Gun : MonoBehaviour
 
     private void Update()
     {
+        Debug.DrawRay(muzzle.position, muzzle.transform.forward, Color.blue);
         if (Input.GetButton("Fire1") && Time.time >= nextFireTime)
         {
             nextFireTime = Time.time + fireRate;
