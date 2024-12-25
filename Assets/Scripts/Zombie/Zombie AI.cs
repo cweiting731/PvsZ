@@ -5,12 +5,14 @@ public class ZombieController : MonoBehaviour
 {
     public float originalSpeed;
     public float originalHealth;
+    public float originalAttack;
     public Animator animator;
     public Rigidbody rigidbody;
     public float destroyDelay;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // setting up
     private float speed;
     private float health;
+    private float attack;
     private State state;
     private Vector3 moveDirection = new Vector3(0, 0, 1);
     private bool isDead = false;
@@ -23,12 +25,32 @@ public class ZombieController : MonoBehaviour
         Walk,
         Attack
     }
+    public void Init(float originalSpeed, float originalHealth, float originalAttack) 
+    {
+        this.originalSpeed = originalSpeed;
+        this.originalHealth = originalHealth;
+        this.originalAttack = originalAttack;
+        speed = originalSpeed;
+        health = originalHealth;
+        attack = originalAttack;
+    }
+    public void ZombieRescale(float scale)
+    {
+        if (scale <= 0)
+        {
+            Debug.Log("Zombie's scale must be greater than 0");
+            return;
+        }
+        transform.localScale = new Vector3(scale, scale, scale);
+    }
+
     void Start()
     {
         if (animator == null) Debug.Log("Don't find the zombie Animator");
         if (rigidbody == null) Debug.Log("Don't find the zombie Rigidbody");
         speed = originalSpeed;
         health = originalHealth;
+        attack = originalAttack;
         SetState(State.Walk);
         //TEST_TIMER = TEST_INTERVAL;
     }
