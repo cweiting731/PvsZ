@@ -7,7 +7,6 @@ public class ZombieController : MonoBehaviour
     public float originalHealth;
     public float originalAttack;
     public Animator animator;
-    public Rigidbody rigidbody;
     public float destroyDelay;
     // setting up
     private float speed;
@@ -15,6 +14,7 @@ public class ZombieController : MonoBehaviour
     private float attack;
     private State state;
     private Vector3 moveDirection = new Vector3(0, 0, 1);
+    private Rigidbody rb;
     private bool isDead = false;
 
     //private float TEST_TIMER;
@@ -46,8 +46,9 @@ public class ZombieController : MonoBehaviour
 
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         if (animator == null) Debug.Log("Don't find the zombie Animator");
-        if (rigidbody == null) Debug.Log("Don't find the zombie Rigidbody");
+        if (rb == null) Debug.Log("Don't find the zombie Rigidbody");
         speed = originalSpeed;
         health = originalHealth;
         attack = originalAttack;
