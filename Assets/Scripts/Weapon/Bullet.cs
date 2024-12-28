@@ -4,6 +4,7 @@ public class Bullet : MonoBehaviour
 {
     public float speed = 20f;
     public float lifeTime = 5f;
+    public float damage = 20f;
     private void Start()
     {
         Destroy(gameObject, lifeTime);
@@ -18,6 +19,16 @@ public class Bullet : MonoBehaviour
     {
         GameObject target = collision.gameObject;
         // reserve for Damage() or Effect()
+        if (target.CompareTag("Enemy"))
+        {
+            ZombieController zbController = target.GetComponent<ZombieController>();
+            if(zbController == null)
+            {
+                Debug.LogError("bullet target controller is null");
+                return;
+            }
+            zbController.TakeDamage(damage);
+        }
         Destroy(gameObject);
     }
 }
