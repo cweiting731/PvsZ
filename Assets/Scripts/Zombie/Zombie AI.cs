@@ -8,6 +8,7 @@ public class ZombieController : MonoBehaviour
     public float originalAttack;
     public Animator animator;
     public float destroyDelay;
+    public BoxCollider boxCollider;
     // setting up
     private float speed;
     private float health;
@@ -49,6 +50,7 @@ public class ZombieController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         if (animator == null) Debug.Log("Don't find the zombie Animator");
         if (rb == null) Debug.Log("Don't find the zombie Rigidbody");
+        if (boxCollider == null) Debug.Log("Don't find the zombie boxCollider");
         speed = originalSpeed;
         health = originalHealth;
         attack = originalAttack;
@@ -150,6 +152,21 @@ public class ZombieController : MonoBehaviour
         isDead = true;
         animator.SetTrigger("Die");
         speed = 0;
+
+        Transform parent = transform.parent;
+        Transform grandparent = (parent != null) ? parent.parent : null;
+        if (grandparent != null && grandparent.CompareTag("ZombieSpawner"))
+        {
+            ZombieSpawner zombieSpawner = grandparent.GetComponent<ZombieSpawner>();
+            if (zombieSpawner != null)
+            {
+                zombieSpawner.RemoveZombieFromLinkedList(gameObject);
+            }
+        }
         Destroy(gameObject, destroyDelay);
+        if (parent != null)
+        {
+            Destroy(parent.gameObject, destroyDelay);
+        }
     }
 }
