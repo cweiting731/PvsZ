@@ -1400,7 +1400,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.9999695, y: 0}
+  m_AnchoredPosition: {x: -1.999939, y: 0}
   m_SizeDelta: {x: -744, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &724439620
@@ -1519,12 +1519,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 890341963}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 302.33334, y: 244.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -54.96908, y: 13.694723, z: 0}
+  m_LocalScale: {x: 1.1412269, y: 1.1412269, z: 1.1412269}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1055162451}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &890341966
 MonoBehaviour:
@@ -2064,6 +2064,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 300110759}
+  - {fileID: 890341965}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3248,7 +3249,7 @@ GameObject:
   - component: {fileID: 1980958126}
   m_Layer: 0
   m_Name: Zombie Spawner
-  m_TagString: Untagged
+  m_TagString: ZombieSpawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3620,7 +3621,6 @@ SceneRoots:
   - {fileID: 1185516955}
   - {fileID: 74558912}
   - {fileID: 2108562984}
-  - {fileID: 890341965}
   - {fileID: 1055162451}
   - {fileID: 999773814}
   - {fileID: 1570101277}
