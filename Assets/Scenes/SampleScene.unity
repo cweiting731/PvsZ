@@ -333,7 +333,7 @@ GameObject:
   - component: {fileID: 20044692}
   - component: {fileID: 20044691}
   m_Layer: 5
-  m_Name: tools
+  m_Name: slots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1538,9 +1538,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8139eae6bd690144bb5b65a2c03458ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tools: {fileID: 20044689}
+  slots: {fileID: 20044689}
   inventory: {fileID: 11530396}
   inventorySelected: {fileID: 1030573792}
+  initialTools:
+  - {fileID: 11400000, guid: 3768ba506db493742ba3b1cd4d8647cc, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -3098,7 +3108,7 @@ Rigidbody:
   m_Mass: 10
   m_Drag: 0.2
   m_AngularDrag: 0
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_CenterOfMass: {x: 0, y: 5, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
@@ -3152,7 +3162,9 @@ MonoBehaviour:
   rb: {fileID: 1732554622}
   moveSpeed: 2
   rotationSpeed: 500
+  placeItemDistance: 5
   followTarget: {fileID: 1710403941}
+  inventoryController: {fileID: 890341966}
 --- !u!4 &1747451403 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8818000498215639124, guid: 21d02266118d5cf4d9cbe24850ace904, type: 3}

@@ -52,8 +52,8 @@ public class UIControl : MonoBehaviour
 
     public void PauseGame()
     {
-        Canvas.SetActive(true); // Åã¥Ü¼È°±µæ³æ
-        Time.timeScale = 0; // ¼È°±¹CÀ¸®É¶¡
+        Canvas.SetActive(true); // ï¿½ï¿½Ü¼È°ï¿½ï¿½ï¿½ï¿½
+        Time.timeScale = 0; // ï¿½È°ï¿½ï¿½Cï¿½ï¿½ï¿½É¶ï¿½
         isPaused = true;
         Debug.Log("pause");
     }
