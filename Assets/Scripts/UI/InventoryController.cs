@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryController : MonoBehaviour
 {
@@ -27,14 +28,18 @@ public class InventoryController : MonoBehaviour
             return;
         }
         GameObject tool = null;
-        for (int i = 0; i < toolsArray.Length; i++)
+        for (int i = 0; i < 9; i++)
         {
-            tool = tools.transform.GetChild(0).gameObject;
+            tool = tools.transform.GetChild(i).gameObject;
             if(tool == null)
             {
                 Debug.LogError("tool is binded error");
                 return;
             }
+            // init tool image
+            Image toolImage = tool.GetComponent<Image>();
+            toolImage.sprite = null;
+            toolImage.color = new Color(1, 1, 1, 0f);
             toolsArray[i] = tool;
         }
         selectedIndex = 0;
