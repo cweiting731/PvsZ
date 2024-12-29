@@ -1,11 +1,14 @@
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
+using System.Collections;
 
 public class ZombieController : MonoBehaviour
 {
     public float originalSpeed;
     public float originalHealth;
     public float originalAttack;
+    public float attackInterval = 10f;
     public Animator animator;
     public float destroyDelay;
     // setting up
@@ -16,6 +19,10 @@ public class ZombieController : MonoBehaviour
     private Vector3 moveDirection = new Vector3(0, 0, 1);
     private Rigidbody rb;
     private bool isDead = false;
+    private float attackTimer = 0f;
+    private bool isAttacking = false;  // 是否正在攻擊
+    private Coroutine attackCoroutine;
+
 
     //private float TEST_TIMER;
     //private float TEST_INTERVAL = 10f;
@@ -90,6 +97,21 @@ public class ZombieController : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
+        if (collision.gameObject.tag == "Nut")
+        {
+            Nut nut = collision.gameObject.GetComponent<Nut>();
+            if (nut != null && !isAttacking)
+            {
+                /*attackTimer += Time.deltaTime;
+
+                if (attackTimer >= attackInterval)
+                {
+                    nut.TakeDamage(attack); // 堅果牆扣血
+                    attackTimer = 0f; // 重置計時器
+                }*/
+                attackCoroutine = StartCoroutine(Attack(nut));
+            }
+        }
         // 有些物件消失時不會進到Exit，所以殭屍會卡在OnCollisionEnter，
         // 像是子彈使用Destroy()之後並不會觸發OnCollisionExit
         // 這是我Debug子彈試出來的，註解先留著
@@ -102,6 +124,12 @@ public class ZombieController : MonoBehaviour
             Debug.Log("OnCollisionExit: " + collision.gameObject.name);
             speed = originalSpeed;
             SetState(State.Walk);
+        }
+        if (collision.gameObject.GetComponent<Nut>() != null)
+        {
+            //attackTimer = 0f;    // 重置攻擊計時器
+            //isAttacking = false;
+            StopAttack();
         }
     }
 
@@ -151,5 +179,27 @@ public class ZombieController : MonoBehaviour
         animator.SetTrigger("Die");
         speed = 0;
         Destroy(gameObject, destroyDelay);
+    }
+    IEnumerator Attack(Nut nut)
+    {
+        isAttacking = true;
+        while (true)
+        {
+            if (nut == null) break; // 如果堅果牆被銷毀，退出協程
+            nut.TakeDamage(attack);
+            yield return new WaitForSeconds(attackInterval); // 等待攻擊間隔
+        }
+        Debug.Log("destroy");
+        isAttacking = false;
+        SetState(State.Walk);
+    }
+    public void StopAttack()
+    {
+        if (attackCoroutine != null)
+        {
+            StopCoroutine(attackCoroutine); // 停止協程
+            attackCoroutine = null;
+        }
+        isAttacking = false;
     }
 }

@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Bullet
   - Gun
+  - item
   layers:
   - Default
   - TransparentFX
