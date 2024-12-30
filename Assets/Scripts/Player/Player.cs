@@ -6,7 +6,9 @@ public class Player : MonoBehaviour
     public Rigidbody rb;
     public float moveSpeed = 1f;
     public float rotationSpeed = 500f;
+    public float placeItemDistance = 5f;
     public Transform followTarget;
+    public InventoryController inventoryController;
     void Start()
     {
         // Cursor.lockState = CursorLockMode.Locked;
@@ -41,9 +43,33 @@ public class Player : MonoBehaviour
         movement.y = 0;
         Vector3 newPosition = rb.position + movement;
         rb.MovePosition(newPosition);
-
         // rotate head
         transform.rotation = Quaternion.Euler(0, followTarget.rotation.eulerAngles.y, 0);
         followTarget.localEulerAngles = new Vector3(angles.x, 0, 0);
+
+        // some collision will cause player rotation, this may fix it but currently not useful
+        rb.angularVelocity = Vector3.zero;
+
+        // place tool
+        if (Input.GetMouseButtonDown(1))
+        {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
+            // Debug.DrawRay(ray.origin, ray.direction * 100, Color.yellow, 1);
+            if (Physics.Raycast(ray, out hit) && hit.distance < placeItemDistance)
+            {
+                // Debug.Log(hit.transform.tag);
+                if (hit.transform.tag == "Ground")
+                {
+                    Vector3 placePosition = hit.point;
+                    placePosition.y = 0.5f;
+                    // Debug.Log($"prefab: {inventoryController.GetTool().prefab.name}");
+                    if (inventoryController.GetTool() != null)
+                    {
+                        Instantiate(inventoryController.GetTool().prefab, placePosition, Quaternion.identity);
+                    }
+                }
+            }
+        }
     }
 }

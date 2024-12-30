@@ -30,6 +30,10 @@ public class ZombieSpawner : MonoBehaviour
         RunnerRate += GiantRate;
         cardinalNum = RunnerRate;
         Zombies = new LinkedList<GameObject>();
+
+        int zombiesLayer = LayerMask.NameToLayer("zombies");
+        Physics.IgnoreLayerCollision(zombiesLayer, zombiesLayer, true);
+        Debug.Log("Ignore zombie layer collision");
     }
 
     // Update is called once per frame
@@ -77,11 +81,19 @@ public class ZombieSpawner : MonoBehaviour
         //zombie.transform.localPosition = new Vector3(0, 0, 0);
         //zombie.transform.rotation = Quaternion.identity;
         zombie.tag = "Enemy";
-        foreach (GameObject z in Zombies)
-        {
-            Physics.IgnoreCollision(z.transform.Find("Zombie").gameObject.GetComponent<Collider>(), 
-                                  zombie.transform.Find("Zombie").gameObject.GetComponent<Collider>());
-        }
+        zombie.layer = LayerMask.NameToLayer("zombies");
         Zombies.AddLast(zombie);
+    }
+
+    public void RemoveZombieFromLinkedList(GameObject zombie) 
+    {
+        if (Zombies.Contains(zombie))
+        {
+            Zombies.Remove(zombie);
+        }
+        else
+        {
+            Debug.Log("There isn't have the target zombie");
+        }
     }
 }
