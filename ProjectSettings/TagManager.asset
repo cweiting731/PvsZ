@@ -9,6 +9,7 @@ TagManager:
   - Bullet
   - Gun
   - ZombieSpawner
+  - item
   layers:
   - Default
   - TransparentFX
