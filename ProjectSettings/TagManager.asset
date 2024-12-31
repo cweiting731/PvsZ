@@ -10,6 +10,7 @@ TagManager:
   - Gun
   - ZombieSpawner
   - item
+  - EndLine
   layers:
   - Default
   - TransparentFX

@@ -8,7 +8,7 @@ public class ZombieController : MonoBehaviour
     public float originalSpeed;
     public float originalHealth;
     public float originalAttack;
-    public float attackInterval = 10f;
+    public float attackInterval = 2f;
     public Animator animator;
     public float destroyDelay;
     public BoxCollider boxCollider;
@@ -89,31 +89,45 @@ public class ZombieController : MonoBehaviour
             // 啊所以這個區塊先留空應該沒關係
             return;
         }
+        if (collision.gameObject.tag == "EndLine")
+        {
+            Debug.Log("zombie walk to EndLine");
+            DeleteThis(false);
+        }
         if (collision.gameObject.tag != "Ground")
         {
             Debug.Log("OnCollisionEnter: " + collision.gameObject.name);
             speed = 0;
             SetState(State.Attack);
         }
-    }
-
-    private void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject.tag == "Nut")
+        if (collision.gameObject.tag == "item")
         {
             Nut nut = collision.gameObject.GetComponent<Nut>();
             if (nut != null && !isAttacking)
             {
-                /*attackTimer += Time.deltaTime;
-
-                if (attackTimer >= attackInterval)
-                {
-                    nut.TakeDamage(attack); // 堅果牆扣血
-                    attackTimer = 0f; // 重置計時器
-                }*/
+                isAttacking = true;
                 attackCoroutine = StartCoroutine(Attack(nut));
             }
         }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        //if (collision.gameObject.tag == "Nut")
+        //{
+        //    Nut nut = collision.gameObject.GetComponent<Nut>();
+        //    if (nut != null && !isAttacking)
+        //    {
+        //        /*attackTimer += Time.deltaTime;
+
+        //        if (attackTimer >= attackInterval)
+        //        {
+        //            nut.TakeDamage(attack); // 堅果牆扣血
+        //            attackTimer = 0f; // 重置計時器
+        //        }*/
+        //        attackCoroutine = StartCoroutine(Attack(nut));
+        //    }
+        //}
         // 有些物件消失時不會進到Exit，所以殭屍會卡在OnCollisionEnter，
         // 像是子彈使用Destroy()之後並不會觸發OnCollisionExit
         // 這是我Debug子彈試出來的，註解先留著
@@ -142,13 +156,9 @@ public class ZombieController : MonoBehaviour
         {
             case State.Walk:
                 animator.SetInteger("state", 0);
-                // rigidbody.isKinematic = false;
-                // rigidbody.constraints = RigidbodyConstraints.FreezeRotation; // ����w����
                 break;
             case State.Attack:
                 animator.SetInteger("state", 1);
-                // rigidbody.isKinematic = false;
-                // rigidbody.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
                 break;
         }
         Debug.Log("Zombie State: " + state.ToString());
@@ -181,6 +191,14 @@ public class ZombieController : MonoBehaviour
         animator.SetTrigger("Die");
         speed = 0;
 
+        rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        boxCollider.enabled = false;
+
+        DeleteThis(true);
+    }
+
+    private void DeleteThis(bool needDelay)
+    {
         Transform parent = transform.parent;
         Transform grandparent = (parent != null) ? parent.parent : null;
         if (grandparent != null && grandparent.CompareTag("ZombieSpawner"))
@@ -191,32 +209,56 @@ public class ZombieController : MonoBehaviour
                 zombieSpawner.RemoveZombieFromLinkedList(gameObject);
             }
         }
-        Destroy(gameObject, destroyDelay);
-        if (parent != null)
+        if (needDelay)
         {
-            Destroy(parent.gameObject, destroyDelay);
+            Destroy(gameObject, destroyDelay);
+            if (parent != null)
+            {
+                Destroy(parent.gameObject, destroyDelay);
+            }
+        }
+        else
+        {
+            Destroy(gameObject);
+            if (parent != null)
+            {
+                Destroy(parent.gameObject);
+            }
         }
     }
     IEnumerator Attack(Nut nut)
     {
-        isAttacking = true;
-        while (true)
+        while (nut != null)
         {
-            if (nut == null) break; // 如果堅果牆被銷毀，退出協程
-            nut.TakeDamage(attack);
-            yield return new WaitForSeconds(attackInterval); // 等待攻擊間隔
+            Debug.Log("Zombie attacking");
+            nut.TakeDamage(attack); // 攻擊堅果牆
+
+            for (float timer = 0; timer < attackInterval; timer += Time.deltaTime)
+            {
+                if (nut == null) // 檢查 nut 是否被銷毀
+                {
+                    StopAttack();
+                    yield break; // 立即退出協程
+                }
+                yield return null; // 每幀檢查
+            }
         }
-        Debug.Log("destroy");
-        isAttacking = false;
-        SetState(State.Walk);
+
+        Debug.Log("Nut destroyed");
+        StopAttack(); // reset
     }
+
+
     public void StopAttack()
     {
+        Debug.Log("zombie stop attacking");
         if (attackCoroutine != null)
         {
             StopCoroutine(attackCoroutine); // 停止協程
             attackCoroutine = null;
         }
         isAttacking = false;
+        speed = originalSpeed;
+        SetState(State.Walk);
     }
 }
