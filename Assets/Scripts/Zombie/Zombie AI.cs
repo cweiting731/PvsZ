@@ -161,7 +161,7 @@ public class ZombieController : MonoBehaviour
                 animator.SetInteger("state", 1);
                 break;
         }
-        Debug.Log("Zombie State: " + state.ToString());
+        // Debug.Log("Zombie State: " + state.ToString());
     }
 
     public void TakeDamage(float damage)
@@ -230,7 +230,7 @@ public class ZombieController : MonoBehaviour
     {
         while (nut != null)
         {
-            Debug.Log("Zombie attacking");
+            //Debug.Log("Zombie attacking");
             nut.TakeDamage(attack); // 攻擊堅果牆
 
             for (float timer = 0; timer < attackInterval; timer += Time.deltaTime)
