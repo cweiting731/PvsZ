@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Nut : MonoBehaviour
+public class Nut : MonoBehaviour, Damageable
 {
     public Transform nutWall;
+    public CapsuleCollider capsuleCollider;
     public float maxHealth = 100f; // 堅果牆的初始血量
     public int EnegyCost = 20;
     private float currentHealth; // 當前血量
@@ -57,12 +58,16 @@ public class Nut : MonoBehaviour
     {
         Debug.Log("堅果牆被摧毀！");
 
-        // 禁用所有 Collider
-        Collider[] colliders = GetComponentsInChildren<Collider>();
-        foreach (var collider in colliders)
+        if (capsuleCollider != null)
         {
-            collider.enabled = false;
+            capsuleCollider.enabled = false;
         }
+        // 禁用所有 Collider
+        //Collider[] colliders = GetComponentsInChildren<Collider>();
+        //foreach (var collider in colliders)
+        //{
+        //    collider.enabled = false;
+        //}
         // 延遲銷毀，讓物理引擎更新
         Destroy(healthBar.gameObject, 0.1f);
         Destroy(nutWall.gameObject, 0.1f);
