@@ -102,12 +102,18 @@ public class ZombieController : MonoBehaviour
         }
         if (collision.gameObject.tag == "item")
         {
-            Nut nut = collision.gameObject.GetComponent<Nut>();
-            if (nut != null && !isAttacking)
+            Damageable damageable = collision.gameObject.GetComponent<Damageable>();
+            if (damageable != null && !isAttacking)
             {
                 isAttacking = true;
-                attackCoroutine = StartCoroutine(Attack(nut));
+                attackCoroutine = StartCoroutine(Attack(damageable));
             }
+            //Nut nut = collision.gameObject.GetComponent<Nut>();
+            //if (nut != null && !isAttacking)
+            //{
+            //    isAttacking = true;
+            //    attackCoroutine = StartCoroutine(Attack(nut));
+            //}
         }
     }
 
@@ -226,16 +232,16 @@ public class ZombieController : MonoBehaviour
             }
         }
     }
-    IEnumerator Attack(Nut nut)
+    IEnumerator Attack(Damageable target)
     {
-        while (nut != null)
+        while (target != null)
         {
             //Debug.Log("Zombie attacking");
-            nut.TakeDamage(attack); // 攻擊堅果牆
+            target.TakeDamage(attack); // 攻擊物件
 
             for (float timer = 0; timer < attackInterval; timer += Time.deltaTime)
             {
-                if (nut == null) // 檢查 nut 是否被銷毀
+                if (target == null || (target as MonoBehaviour) == null)  // 檢查 nut 是否被銷毀
                 {
                     StopAttack();
                     yield break; // 立即退出協程
@@ -244,7 +250,7 @@ public class ZombieController : MonoBehaviour
             }
         }
 
-        Debug.Log("Nut destroyed");
+        Debug.Log("destroy item");
         StopAttack(); // reset
     }
 
@@ -260,5 +266,20 @@ public class ZombieController : MonoBehaviour
         isAttacking = false;
         speed = originalSpeed;
         SetState(State.Walk);
+    }
+
+    public bool isHalfHealth()
+    {
+        return health < (originalHealth / 2);
+    }
+
+    public void RunnerChangeSpeed()
+    {
+        originalSpeed = 2.75f;
+        animator.SetBool("lessHealth", true);
+        if (state == State.Walk)
+        {
+            speed = originalSpeed;
+        }
     }
 }
