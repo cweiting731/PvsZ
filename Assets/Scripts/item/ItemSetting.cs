@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New tool", menuName = "addTool")]
-public class Tool : ScriptableObject
+[CreateAssetMenu(fileName = "New item", menuName = "addItem")]
+public class Item : ScriptableObject
 {
     public string toolName;
     public Sprite sprite;
