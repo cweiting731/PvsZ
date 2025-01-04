@@ -1742,7 +1742,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6325779045382225874, guid: 042a98420114e9240b573624ca92cc3a, type: 3}
       propertyPath: m_Name
-      value: TestToolWannaPlayApex
+      value: TestItemWannaPlayApex
       objectReference: {fileID: 0}
     - target: {fileID: 6330810128539538309, guid: 042a98420114e9240b573624ca92cc3a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1889,9 +1889,9 @@ MonoBehaviour:
   slots: {fileID: 20044689}
   inventory: {fileID: 11530396}
   inventorySelected: {fileID: 1030573792}
-  initialTools:
+  initialItems:
   - {fileID: 11400000, guid: 3768ba506db493742ba3b1cd4d8647cc, type: 2}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: d253bebc999b8ae468e94656d3dcf5cb, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

@@ -45,7 +45,7 @@ public class PeaShooter : MonoBehaviour, Damageable
 
     private void DestroyPeaShooter()
     {
-        Debug.Log("½Ü¨§®g¤â³QºR·´");
+        Debug.Log("ï¿½Ü¨ï¿½ï¿½gï¿½ï¿½Qï¿½Rï¿½ï¿½");
         thisCollider.enabled = false;
         Destroy(gameObject, 0.1f);
     }
