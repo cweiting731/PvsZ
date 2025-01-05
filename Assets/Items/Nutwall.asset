@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8a57ba1d292ac46aa7db9d7b73004e, type: 3}
+  m_Name: Nutwall
+  m_EditorClassIdentifier: 
+  toolName: Nutwall
+  sprite: {fileID: -857303359, guid: 285838a8c1cad5e47aa511d2f94e2b5b, type: 3}
+  prefab: {fileID: 4417947248886603375, guid: 8bc1bf87764b29248823395c4ecd03e0, type: 3}

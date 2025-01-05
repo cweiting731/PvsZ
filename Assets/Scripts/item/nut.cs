@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Nut : MonoBehaviour
+public class Nut : MonoBehaviour, Damageable
 {
     public Transform nutWall;
-    public float maxHealth = 100f; // °íªGÀğªºªì©l¦å¶q
+    public CapsuleCollider capsuleCollider;
+    public float maxHealth = 100f; // ï¿½ï¿½ï¿½Gï¿½ğªºªï¿½lï¿½ï¿½q
     public int EnegyCost = 20;
-    private float currentHealth; // ·í«e¦å¶q
+    private float currentHealth; // ï¿½ï¿½ï¿½eï¿½ï¿½q
     public Slider healthBar;
     public Vector3 offset;
     public Canvas healthBarCanvas;
@@ -14,15 +15,30 @@ public class Nut : MonoBehaviour
     void Start()
     {
         healthBarCanvas.transform.localPosition = new Vector3(0.01f, 0.05f, 0);
-        // ªì©l¤Æ¦å¶q
+        // ï¿½ï¿½lï¿½Æ¦ï¿½q
         currentHealth = maxHealth;
         if (healthBar != null)
         {
             healthBar.maxValue = maxHealth;
             healthBar.value = currentHealth;
         }
+        // è‡ªå‹•æŒ‡å®šä¸»æ”å½±æ©Ÿ
+        foreach (Transform child in transform)
+        {
+            if (child.name.Equals("Canvas"))
+            {
+                Canvas canvas = child.GetComponent<Canvas>();
+                RectTransform rt = child.GetComponent<RectTransform>();
+                if (canvas != null && canvas.renderMode == RenderMode.WorldSpace)
+                {
+                    canvas.worldCamera = Camera.main;
+                    rt.localPosition = new Vector3(0f, 0.25f, 0f);
+                }
+                break;
+            }
+        }
 
-        // ªì©l³]¸m¡G¸T¥Î Kinematic¡AÅıª«Åé¦ÛµM¸¨¦a
+        // ï¿½ï¿½lï¿½]ï¿½mï¿½Gï¿½Tï¿½ï¿½ Kinematicï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÛµMï¿½ï¿½ï¿½a
 
     }
     void Update()
@@ -30,11 +46,11 @@ public class Nut : MonoBehaviour
         healthBar.gameObject.SetActive(currentHealth < maxHealth);
         if (transform.position.y >= 0.2)
         {
-            transform.position += Vector3.down * Time.deltaTime * 9.8f; // ¼ÒÀÀ­«¤O
+            transform.position += Vector3.down * Time.deltaTime * 9.8f; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½O
         }
     }
 
-    // ·í°íªGÀğ¨ü¨ì§ğÀ»®É½Õ¥Î¦¹¤èªk
+    // ï¿½ï¿½ï¿½ï¿½ï¿½Gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É½Õ¥Î¦ï¿½ï¿½ï¿½k
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
@@ -43,9 +59,9 @@ public class Nut : MonoBehaviour
             healthBar.value = currentHealth;
         }
 
-        //Debug.Log("°íªGÀğ¨ü¨ì§ğÀ»¡A³Ñ¾l¦å¶q¡G" + currentHealth);
+        //Debug.Log("ï¿½ï¿½ï¿½Gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½Ñ¾lï¿½ï¿½qï¿½G" + currentHealth);
 
-        // ¦pªG¦å¶q­°¨ì 0¡A¾P·´°íªGÀğ
+        // ï¿½pï¿½Gï¿½ï¿½qï¿½ï¿½ï¿½ï¿½ 0ï¿½Aï¿½Pï¿½ï¿½ï¿½ï¿½ï¿½Gï¿½ï¿½
         if (currentHealth <= 0)
         {
             DestroyWall();
@@ -55,15 +71,19 @@ public class Nut : MonoBehaviour
 
     public void DestroyWall()
     {
-        Debug.Log("°íªGÀğ³QºR·´¡I");
+        Debug.Log("ï¿½ï¿½ï¿½Gï¿½ï¿½Qï¿½Rï¿½ï¿½ï¿½I");
 
-        // ¸T¥Î©Ò¦³ Collider
-        Collider[] colliders = GetComponentsInChildren<Collider>();
-        foreach (var collider in colliders)
+        if (capsuleCollider != null)
         {
-            collider.enabled = false;
+            capsuleCollider.enabled = false;
         }
-        // ©µ¿ğ¾P·´¡AÅıª«²z¤ŞÀº§ó·s
+        // ï¿½Tï¿½Î©Ò¦ï¿½ Collider
+        //Collider[] colliders = GetComponentsInChildren<Collider>();
+        //foreach (var collider in colliders)
+        //{
+        //    collider.enabled = false;
+        //}
+        // ï¿½ï¿½ï¿½ï¿½Pï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½zï¿½ï¿½ï¿½ï¿½ï¿½ï¿½s
         Destroy(healthBar.gameObject, 0.1f);
         Destroy(nutWall.gameObject, 0.1f);
     }

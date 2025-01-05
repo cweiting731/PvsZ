@@ -62,11 +62,11 @@ public class Player : MonoBehaviour
                 if (hit.transform.tag == "Ground")
                 {
                     Vector3 placePosition = hit.point;
-                    placePosition.y = 0.5f;
                     // Debug.Log($"prefab: {inventoryController.GetTool().prefab.name}");
-                    if (inventoryController.GetTool() != null)
+                    if (inventoryController.GetItem() != null)
                     {
-                        Instantiate(inventoryController.GetTool().prefab, placePosition, Quaternion.identity);
+                        placePosition.y = inventoryController.GetItem().prefab.transform.position.y;
+                        Instantiate(inventoryController.GetItem().prefab, placePosition, Quaternion.identity);
                     }
                 }
             }

@@ -8,10 +8,10 @@ public class InventoryController : MonoBehaviour
     public GameObject slots;
     public GameObject inventory;
     public GameObject inventorySelected;
-    public Tool[] initialTools = new Tool[9];
+    public Item[] initialItems = new Item[9];
     private int selectedIndex;
     private GameObject[] inventorySlots = new GameObject[9];
-    private Tool[] tools = new Tool[9];
+    private Item[] items = new Item[9];
     private Dictionary<int, int[]> indexToRectLF = new Dictionary<int, int[]>{
         { 0, new int[] { 0, 740 } },
         { 1, new int[] { 90, 650 } },
@@ -40,26 +40,26 @@ public class InventoryController : MonoBehaviour
                 return;
             }
             // init slot
-            Image toolImage = slot.GetComponent<Image>();
-            Tool tool = initialTools[i];
-            if (tool == null)
+            Image itemImage = slot.GetComponent<Image>();
+            Item item = initialItems[i];
+            if (item == null)
             {
-                toolImage.sprite = null;
+                itemImage.sprite = null;
             }
             else
             {
-                toolImage.sprite = tool.sprite;
+                itemImage.sprite = item.sprite;
             }
-            if (toolImage.sprite != null)
+            if (itemImage.sprite != null)
             {
-                toolImage.color = new Color(1, 1, 1, 1f);
+                itemImage.color = new Color(1, 1, 1, 1f);
             }
             else
             {
-                toolImage.color = new Color(1, 1, 1, 0f);
+                itemImage.color = new Color(1, 1, 1, 0f);
             }
             inventorySlots[i] = slot;
-            tools[i] = tool;
+            items[i] = item;
         }
         selectedIndex = 0;
     }
@@ -114,44 +114,44 @@ public class InventoryController : MonoBehaviour
     }
 
     /// <summary>
-    /// Get a Tool from the current selected.
+    /// Get a Item from the current selected.
     /// </summary>
-    /// <returns>the Tool, null if null</returns>
-    public Tool GetTool()
+    /// <returns>the Item, null if null</returns>
+    public Item GetItem()
     {
-        return tools[selectedIndex];
+        return items[selectedIndex];
     }
 
     /// <summary>
-    /// Get a Tool from the current inventory.
+    /// Get a Item from the current inventory.
     /// </summary>
     /// <param name="index">the index of inventory(start with 0)</param>
-    /// <returns>the Tool, null if null</returns>
-    public Tool GetToolByIndex(int index)
+    /// <returns>the Item, null if null</returns>
+    public Item GetItemByIndex(int index)
     {
-        return tools[index];
+        return items[index];
     }
 
     /// <summary>
-    /// Set a tool to the index of the inventory 
+    /// Set a item to the index of the inventory 
     /// </summary>
     /// <param name="index">index</param>
-    /// <param name="tool">the tool asset</param>
-    public void SetTool(int index, Tool tool)
+    /// <param name="item">the item asset</param>
+    public void SetItem(int index, Item item)
     {
-        inventorySlots[index].GetComponent<Image>().sprite = tool.sprite;
+        inventorySlots[index].GetComponent<Image>().sprite = item.sprite;
         inventorySlots[index].GetComponent<Image>().color = new Color(1, 1, 1, 1f);
-        tools[index] = tool;
+        items[index] = item;
     }
 
     /// <summary>
-    /// Remove a tool from the index of the inventory
+    /// Remove a item from the index of the inventory
     /// </summary>
     /// <param name="index">index</param>
-    public void RemoveTool(int index)
+    public void RemoveItem(int index)
     {
         inventorySlots[index].GetComponent<Image>().sprite = null;
         inventorySlots[index].GetComponent<Image>().color = new Color(1, 1, 1, 0f);
-        tools[index] = null;
+        items[index] = null;
     }
 }
