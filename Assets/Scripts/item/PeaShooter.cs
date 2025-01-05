@@ -8,6 +8,7 @@ public class PeaShooter : MonoBehaviour, Damageable
     public float attackInterval;
     public float maxHealth;
     public int energyCost = 20;
+    public Transform muzzle;
     //
     private float currentHealth;
 
@@ -31,7 +32,7 @@ public class PeaShooter : MonoBehaviour, Damageable
 
     void Shoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab);
+        GameObject bullet = Instantiate(bulletPrefab, muzzle.position, muzzle.rotation);
     }
 
     public void TakeDamage(float damage)
@@ -45,7 +46,7 @@ public class PeaShooter : MonoBehaviour, Damageable
 
     private void DestroyPeaShooter()
     {
-        Debug.Log("½Ü¨§®g¤â³QºR·´");
+        Debug.Log("ï¿½Ü¨ï¿½ï¿½gï¿½ï¿½Qï¿½Rï¿½ï¿½");
         thisCollider.enabled = false;
         Destroy(gameObject, 0.1f);
     }
