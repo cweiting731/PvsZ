@@ -12,6 +12,7 @@ public class ZombieController : MonoBehaviour
     public Animator animator;
     public float destroyDelay;
     public BoxCollider boxCollider;
+    private CenterController centerController;
     // setting up
     private float speed;
     private float health;
@@ -62,6 +63,8 @@ public class ZombieController : MonoBehaviour
         health = originalHealth;
         attack = originalAttack;
         SetState(State.Walk);
+        centerController = GameObject.Find("Center Controller").GetComponent<CenterController>();
+        if (centerController == null) Debug.Log("Don't find the centerController");
         //TEST_TIMER = TEST_INTERVAL;
     }
 
@@ -92,6 +95,7 @@ public class ZombieController : MonoBehaviour
         if (collision.gameObject.tag == "EndLine")
         {
             Debug.Log("zombie walk to EndLine");
+            centerController.DecreaseHealth();
             DeleteThis(false);
         }
         if (collision.gameObject.tag != "Ground")

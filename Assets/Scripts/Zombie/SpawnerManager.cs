@@ -4,7 +4,6 @@ using System.Collections;
 
 public class SpawnerManager : MonoBehaviour
 {
-    public int level = 5;
     public float spawnInterval = 5f;
     public int NormalRate;
     public int GiantRate;
@@ -15,7 +14,9 @@ public class SpawnerManager : MonoBehaviour
     public ZombieSpawner spawner_three;
     public ZombieSpawner spawner_four;
     public float waveDuration;
+    public CenterController centerController;
     ///////////////////////////////////////
+    private int level;
     private float Timer = 0f;
     private float spawnTimer = 0f;
     private int[] rows = { 0, 1, 2, 3, 4 };
@@ -31,6 +32,7 @@ public class SpawnerManager : MonoBehaviour
         cardinalNum = RunnerRate;
         int zombiesLayer = LayerMask.NameToLayer("zombies");
         Physics.IgnoreLayerCollision(zombiesLayer, zombiesLayer, true);
+        level = centerController.level;
         Debug.Log("Ignore zombie layer collision");
     }
 
@@ -39,8 +41,13 @@ public class SpawnerManager : MonoBehaviour
     {
         if (waveTimes < 3) // 3波結束後就不生成殭屍了
         {
+            if (Timer >= 55f)
+            {
+                // 顯示文字在當前 UI "一大波殭屍正在接近"
+            }
             if (Timer >= 60f && waveTimes < 3)
             {
+                // UI "一大波殭屍正在接近" 清除
                 isWave = true;
                 StartCoroutine(waveSpawn());
                 Timer = 0f;
@@ -54,6 +61,20 @@ public class SpawnerManager : MonoBehaviour
             }
             Timer += Time.deltaTime;
             if (!isWave) spawnTimer += Time.deltaTime;
+        }
+        else
+        {
+            // 場中沒殭屍了 通關一個 level
+            //Debug.Log("wait zombie clear" + spawner_zero.IsZombieEmpty() + spawner_one.IsZombieEmpty() + spawner_two.IsZombieEmpty() + spawner_three.IsZombieEmpty() + spawner_four.IsZombieEmpty());
+            if (spawner_zero.IsZombieEmpty() && spawner_one.IsZombieEmpty() && spawner_two.IsZombieEmpty() && spawner_three.IsZombieEmpty() && spawner_four.IsZombieEmpty())
+            {
+                centerController.NextLevel();
+                level = centerController.level;
+                waveTimes = 0;
+                Timer = 0f;
+                spawnTimer = 0f;
+                Debug.Log("Level" + level);
+            }
         }
     }
 
