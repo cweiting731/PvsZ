@@ -9,18 +9,24 @@ public class Nut : MonoBehaviour, Damageable
     public int EnegyCost = 20;
     private float currentHealth; // ���e��q
     public Slider healthBar;
-    public Vector3 offset;
+    public Vector3 offset = new Vector3(0, 1f, 0);
     public Canvas healthBarCanvas;
+    private Animator animator;
 
     void Start()
     {
-        healthBarCanvas.transform.localPosition = new Vector3(0.01f, 0.05f, 0);
+        animator = GetComponent<Animator>();
         // ��l�Ʀ�q
         currentHealth = maxHealth;
         if (healthBar != null)
         {
             healthBar.maxValue = maxHealth;
             healthBar.value = currentHealth;
+        }
+        if (healthBarCanvas != null)
+        {
+            healthBarCanvas.transform.position = transform.position + offset; // 初始化位置
+            healthBarCanvas.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward); // 朝向攝影機
         }
         // 自動指定主攝影機
         foreach (Transform child in transform)
@@ -39,7 +45,7 @@ public class Nut : MonoBehaviour, Damageable
         }
 
         // ��l�]�m�G�T�� Kinematic�A������۵M���a
-
+        healthBar.gameObject.SetActive(currentHealth < maxHealth);
     }
     void Update()
     {
@@ -53,7 +59,12 @@ public class Nut : MonoBehaviour, Damageable
     // �����G���������ɽեΦ���k
     public void TakeDamage(float damage)
     {
+        Debug.Log("NutHurt");
         currentHealth -= damage;
+        if (animator != null)
+        {
+            animator.SetTrigger("hurtTrigger");
+        }
         if (healthBar != null)
         {
             healthBar.value = currentHealth;
