@@ -33,7 +33,7 @@ public class CenterController : MonoBehaviour
         }
         Debug.Log("Health" + health);
     }
-    public void NextLevel()
+    public void NextLeveling()
     {
         if (level == 5)
         {

@@ -156,8 +156,5 @@ MonoBehaviour:
   NormalZombiePrefab: {fileID: 8623705291632316242, guid: c54ef36929c84f241b6bb61adb2d9e38, type: 3}
   GiantZombiePrefab: {fileID: 6556743864698764780, guid: 21d02266118d5cf4d9cbe24850ace904, type: 3}
   RunnerZombiePrefab: {fileID: 4897249556491024747, guid: 703bcb63cda43a3458ff7e95516aa957, type: 3}
+  MinerZombiePrefab: {fileID: 6006159448597922290, guid: 21cc42be226c0634da16c4cf5b4a799b, type: 3}
   zombiesStorage: {fileID: 3310068770541362797}
-  OriginalSpawnTime: 10
-  NormalRate: 1
-  GiantRate: 1
-  RunnerRate: 1

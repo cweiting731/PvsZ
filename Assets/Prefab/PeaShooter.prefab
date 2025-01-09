@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 8754750975262687443}
   - component: {fileID: 6727219309580102787}
   - component: {fileID: 6388402291949614807}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sphere.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 7677191886080428176}
   - component: {fileID: 4981048394354615772}
   - component: {fileID: 456288292718008026}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 3010848920802259117}
   - component: {fileID: 6751553534790365307}
   - component: {fileID: 5146290246945605614}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PeaShooter
   m_TagString: item
   m_Icon: {fileID: 0}

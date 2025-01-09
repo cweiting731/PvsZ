@@ -1078,6 +1078,8 @@ MonoBehaviour:
   originalSpeed: 0.5
   originalHealth: 100
   originalAttack: 20
+  attackInterval: 2
+  energyGive: 1
   animator: {fileID: 2252048908808706954}
   destroyDelay: 3
   boxCollider: {fileID: 4231178428440312227}
