@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe8a57ba1d292ac46aa7db9d7b73004e, type: 3}
-  m_Name: Nutwall
+  m_Name: Chomper
   m_EditorClassIdentifier: 
-  toolName: Nutwall
-  sprite: {fileID: -857303359, guid: 285838a8c1cad5e47aa511d2f94e2b5b, type: 3}
-  prefab: {fileID: 559704517077101331, guid: 8bc1bf87764b29248823395c4ecd03e0, type: 3}
+  toolName: Chomper
+  sprite: {fileID: 868014729, guid: 4fce9830cec98a24f9eb387ea6ddb0a7, type: 3}
+  prefab: {fileID: 5554818399086415563, guid: ec33bd86d0c35484691e67383e7c6989, type: 3}

@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe8a57ba1d292ac46aa7db9d7b73004e, type: 3}
-  m_Name: Nutwall
+  m_Name: ChiliBomb
   m_EditorClassIdentifier: 
-  toolName: Nutwall
-  sprite: {fileID: -857303359, guid: 285838a8c1cad5e47aa511d2f94e2b5b, type: 3}
-  prefab: {fileID: 559704517077101331, guid: 8bc1bf87764b29248823395c4ecd03e0, type: 3}
+  toolName: ChiliBomb
+  sprite: {fileID: 891972394, guid: 5e14a839027425649bf919355033a6c5, type: 3}
+  prefab: {fileID: 4698010272469492571, guid: 7f5eaf6f9c0ad524f8b47e6181009f00, type: 3}
