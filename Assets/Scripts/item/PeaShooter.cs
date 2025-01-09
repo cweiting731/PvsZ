@@ -42,6 +42,7 @@ public class PeaShooter : MonoBehaviour, Damageable
         {
             DestroyPeaShooter();    
         }
+        Debug.Log("PeaShooter Health" + currentHealth);
     }
 
     private void DestroyPeaShooter()

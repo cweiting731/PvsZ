@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.NetworkInformation;
 using UnityEngine;
 
@@ -95,5 +96,14 @@ public class ZombieSpawner : MonoBehaviour
         {
             Debug.Log("There isn't have the target zombie");
         }
+        // 清理已經被銷毀的物件
+        Zombies = new LinkedList<GameObject>(Zombies.Where(z => z != null));
+    }
+
+    public bool IsZombieEmpty()
+    {
+        Transform zombie = transform.GetChild(0);
+        //if (zombie.childCount == 0) Debug.Log("can't find zombie");
+        return zombie.childCount == 0;
     }
 }
