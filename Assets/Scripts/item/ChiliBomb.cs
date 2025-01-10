@@ -92,5 +92,10 @@ public class ChiliBomb : MonoBehaviour, Damageable
     {
 
     }
+
+    public int TakeEnergyCost()
+    {
+        return EnergyCost;
+    }
 }
 

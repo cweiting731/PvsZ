@@ -115,4 +115,9 @@ public class Sunflower : MonoBehaviour, Damageable
         }
         Destroy(gameObject); // §R°£¦V¤é¸ª
     }
+
+    public int TakeEnergyCost()
+    {
+        return EnergyCost;
+    }
 }

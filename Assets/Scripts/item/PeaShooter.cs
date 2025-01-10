@@ -86,4 +86,9 @@ public class PeaShooter : MonoBehaviour, Damageable
         thisCollider.enabled = false;
         Destroy(gameObject, 0.1f);
     }
+
+    public int TakeEnergyCost()
+    {
+        return EnergyCost;
+    }
 }
