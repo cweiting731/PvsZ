@@ -1,9 +1,8 @@
-using System.Threading;
-using Unity.VisualScripting;
 using UnityEngine;
 using System.Collections;
+using TreeEditor;
 
-public class ZombieController : MonoBehaviour
+public class MinerZombie : MonoBehaviour
 {
     public float originalSpeed;
     public float originalHealth;
@@ -23,19 +22,19 @@ public class ZombieController : MonoBehaviour
     private Rigidbody rb;
     private bool isDead = false;
     private float attackTimer = 0f;
-    private bool isAttacking = false;  // 是否正在攻擊
+    private bool isAttacking = false;  // �O�_���b����
+    private bool isStand = false;
+    private bool firstTouchGround = false;
+    private float backToGroundY;
+    private float endOfMinerZ;
     private Coroutine attackCoroutine;
-
-
-    //private float TEST_TIMER;
-    //private float TEST_INTERVAL = 10f;
 
     private enum State
     {
         Walk,
         Attack
     }
-    public void Init(float originalSpeed, float originalHealth, float originalAttack) 
+    public void Init(float originalSpeed, float originalHealth, float originalAttack)
     {
         this.originalSpeed = originalSpeed;
         this.originalHealth = originalHealth;
@@ -66,7 +65,7 @@ public class ZombieController : MonoBehaviour
         SetState(State.Walk);
         centerController = GameObject.Find("GameControl").GetComponent<CenterController>();
         if (centerController == null) Debug.Log("Don't find the centerController");
-        //TEST_TIMER = TEST_INTERVAL;
+        endOfMinerZ = transform.position.z;
     }
 
     // Update is called once per frame
@@ -76,36 +75,45 @@ public class ZombieController : MonoBehaviour
         {
             transform.position += moveDirection * speed * Time.deltaTime;
         }
-        //TEST_TIMER -= Time.deltaTime;
-        //if (TEST_TIMER <= 0f)
-        //{
-        //    Die();
-        //}
+        if (isStand && transform.position.y < backToGroundY)
+        {
+            transform.position += new Vector3(0, 1, 0) * 0.8f * Time.deltaTime;
+        }
+        if (isStand && transform.position.z < endOfMinerZ)
+        {
+            DeleteThis(false);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (!firstTouchGround && collision.gameObject.tag == "Ground")
+        {
+            rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+            backToGroundY = transform.position.y;
+            transform.position += new Vector3(0, -1, 0) * 1.5f;
+            firstTouchGround = true;
+        }
         if (collision.gameObject.tag == "Bullet")
         {
             Debug.Log("Damaged Zombie");
-            // 我覺得要把Damage和子彈效果寫到bullet上欸->Bullet.cs
-            // 那殭屍得要有一個Damage函式能夠讓我呼叫
-            // 啊所以這個區塊先留空應該沒關係
             return;
         }
         if (collision.gameObject.tag == "EndLine")
         {
-            Debug.Log("zombie walk to EndLine");
-            centerController.DecreaseHealth();
-            DeleteThis(false);
+            Debug.Log("Miner zombie walk to EndLine");
+            isStand = true;
+            transform.Rotate(0, 180, 0);
+            moveDirection = new Vector3(0, 0 , -1);
+            return;
         }
-        if (collision.gameObject.tag != "Ground")
+        if (isStand && collision.gameObject.tag != "Ground")
         {
             Debug.Log("OnCollisionEnter: " + collision.gameObject.name);
             speed = 0;
             SetState(State.Attack);
         }
-        if (collision.gameObject.tag == "item")
+        if (isStand && collision.gameObject.tag == "item")
         {
             Damageable damageable = collision.gameObject.GetComponent<Damageable>();
             if (damageable != null && !isAttacking)
@@ -113,40 +121,23 @@ public class ZombieController : MonoBehaviour
                 isAttacking = true;
                 attackCoroutine = StartCoroutine(Attack(damageable));
             }
-            //Nut nut = collision.gameObject.GetComponent<Nut>();
-            //if (nut != null && !isAttacking)
-            //{
-            //    isAttacking = true;
-            //    attackCoroutine = StartCoroutine(Attack(nut));
-            //}
+        }
+        if (isStand && collision.gameObject.tag == "ZombieSpawner") // �ݳB�z
+        {
+            Debug.Log("Miner walk to Spawner");
+            //centerController.DecreaseHealth();
+            DeleteThis(false);
         }
     }
 
     private void OnCollisionStay(Collision collision)
     {
-        //if (collision.gameObject.tag == "Nut")
-        //{
-        //    Nut nut = collision.gameObject.GetComponent<Nut>();
-        //    if (nut != null && !isAttacking)
-        //    {
-        //        /*attackTimer += Time.deltaTime;
 
-        //        if (attackTimer >= attackInterval)
-        //        {
-        //            nut.TakeDamage(attack); // 堅果牆扣血
-        //            attackTimer = 0f; // 重置計時器
-        //        }*/
-        //        attackCoroutine = StartCoroutine(Attack(nut));
-        //    }
-        //}
-        // 有些物件消失時不會進到Exit，所以殭屍會卡在OnCollisionEnter，
-        // 像是子彈使用Destroy()之後並不會觸發OnCollisionExit
-        // 這是我Debug子彈試出來的，註解先留著
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag != "Ground")
+        if (collision.gameObject.tag != "Ground" && collision.gameObject.tag != "EndLine")
         {
             Debug.Log("OnCollisionExit: " + collision.gameObject.name);
             speed = originalSpeed;
@@ -154,7 +145,7 @@ public class ZombieController : MonoBehaviour
         }
         if (collision.gameObject.GetComponent<Nut>() != null)
         {
-            //attackTimer = 0f;    // 重置攻擊計時器
+            //attackTimer = 0f;    // ���m�����p�ɾ�
             //isAttacking = false;
             StopAttack();
         }
@@ -177,6 +168,7 @@ public class ZombieController : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if (!isStand) return;
         if (isDead) return;
         health -= damage;
 
@@ -235,16 +227,16 @@ public class ZombieController : MonoBehaviour
         while (target != null)
         {
             //Debug.Log("Zombie attacking");
-            target.TakeDamage(attack); // 攻擊物件
+            target.TakeDamage(attack); // ��������
 
             for (float timer = 0; timer < attackInterval; timer += Time.deltaTime)
             {
-                if (target == null || (target as MonoBehaviour) == null)  // 檢查 nut 是否被銷毀
+                if (target == null || (target as MonoBehaviour) == null)  // �ˬd nut �O�_�Q�P��
                 {
                     StopAttack();
-                    yield break; // 立即退出協程
+                    yield break; // �ߧY�h�X��{
                 }
-                yield return null; // 每幀檢查
+                yield return null; // �C�V�ˬd
             }
         }
 
@@ -258,7 +250,7 @@ public class ZombieController : MonoBehaviour
         Debug.Log("zombie stop attacking");
         if (attackCoroutine != null)
         {
-            StopCoroutine(attackCoroutine); // 停止協程
+            StopCoroutine(attackCoroutine); // �����{
             attackCoroutine = null;
         }
         isAttacking = false;

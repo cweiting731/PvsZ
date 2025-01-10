@@ -8,12 +8,14 @@ public class SpawnerManager : MonoBehaviour
     public int NormalRate;
     public int GiantRate;
     public int RunnerRate;
+    public int MinerRate;
     public ZombieSpawner spawner_zero;
     public ZombieSpawner spawner_one;
     public ZombieSpawner spawner_two;
     public ZombieSpawner spawner_three;
     public ZombieSpawner spawner_four;
     public float waveDuration;
+    public float waveInterval;
     public CenterController centerController;
     ///////////////////////////////////////
     private int level;
@@ -29,7 +31,8 @@ public class SpawnerManager : MonoBehaviour
     {
         GiantRate += NormalRate;
         RunnerRate += GiantRate;
-        cardinalNum = RunnerRate;
+        MinerRate += RunnerRate;
+        cardinalNum = MinerRate;
         int zombiesLayer = LayerMask.NameToLayer("zombies");
         Physics.IgnoreLayerCollision(zombiesLayer, zombiesLayer, true);
         level = centerController.level;
@@ -41,11 +44,11 @@ public class SpawnerManager : MonoBehaviour
     {
         if (waveTimes < 3) // 3波結束後就不生成殭屍了
         {
-            if (Timer >= 55f)
+            if (Timer >= (waveInterval - 5f))
             {
                 // 顯示文字在當前 UI "一大波殭屍正在接近"
             }
-            if (Timer >= 60f && waveTimes < 3)
+            if (Timer >= waveInterval && waveTimes < 3)
             {
                 // UI "一大波殭屍正在接近" 清除
                 isWave = true;
@@ -68,7 +71,7 @@ public class SpawnerManager : MonoBehaviour
             //Debug.Log("wait zombie clear" + spawner_zero.IsZombieEmpty() + spawner_one.IsZombieEmpty() + spawner_two.IsZombieEmpty() + spawner_three.IsZombieEmpty() + spawner_four.IsZombieEmpty());
             if (spawner_zero.IsZombieEmpty() && spawner_one.IsZombieEmpty() && spawner_two.IsZombieEmpty() && spawner_three.IsZombieEmpty() && spawner_four.IsZombieEmpty())
             {
-                centerController.NextLevel();
+                centerController.NextLeveling();
                 level = centerController.level;
                 waveTimes = 0;
                 Timer = 0f;
@@ -94,6 +97,8 @@ public class SpawnerManager : MonoBehaviour
                 type = 1;
             else if (randomTypeNum < RunnerRate)
                 type = 2;
+            else if (randomTypeNum < MinerRate)
+                type = 3;
 
             int rowIndex = rows[i];
             switch(rowIndex)

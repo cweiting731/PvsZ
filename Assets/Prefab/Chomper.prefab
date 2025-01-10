@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 8058087086386055307}
   - component: {fileID: 1599642309223357733}
   - component: {fileID: 3996621116089560975}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,6 +142,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6559366404068835686}
     m_Modifications:
+    - target: {fileID: 385478935673765235, guid: 8a8d05ea9250d254389d460f06f6e5ba, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 564124767285702967, guid: 8a8d05ea9250d254389d460f06f6e5ba, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -150,6 +154,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1095367699493995170, guid: 8a8d05ea9250d254389d460f06f6e5ba, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4407100275088779451, guid: 8a8d05ea9250d254389d460f06f6e5ba, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4528282879766072048, guid: 8a8d05ea9250d254389d460f06f6e5ba, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7377043850930713835, guid: 8a8d05ea9250d254389d460f06f6e5ba, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 0
@@ -157,6 +173,10 @@ PrefabInstance:
     - target: {fileID: 8637016760801569402, guid: 8a8d05ea9250d254389d460f06f6e5ba, type: 3}
       propertyPath: m_Name
       value: HealthBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 8637016760801569402, guid: 8a8d05ea9250d254389d460f06f6e5ba, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8706563584408536211, guid: 8a8d05ea9250d254389d460f06f6e5ba, type: 3}
       propertyPath: m_Pivot.x
@@ -270,6 +290,10 @@ PrefabInstance:
     - target: {fileID: 8123141273917358956, guid: 13dd10d6717971d4ea9125d158299b1e, type: 3}
       propertyPath: m_Name
       value: PP_Daffodil_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 8123141273917358956, guid: 13dd10d6717971d4ea9125d158299b1e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8123141273917358956, guid: 13dd10d6717971d4ea9125d158299b1e, type: 3}
       propertyPath: m_TagString

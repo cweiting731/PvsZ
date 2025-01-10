@@ -22,12 +22,20 @@ public class Bullet : MonoBehaviour
         if (target.CompareTag("Enemy"))
         {
             ZombieController zbController = target.GetComponent<ZombieController>();
-            if(zbController == null)
+            MinerZombie minerZombie = target.GetComponent<MinerZombie>();
+            if(zbController == null && minerZombie  != null)
+            {
+                minerZombie.TakeDamage(damage);
+            }
+            else if (zbController != null && minerZombie == null)
+            {
+                zbController.TakeDamage(damage);
+            }
+            else
             {
                 Debug.LogError("bullet target controller is null");
                 return;
             }
-            zbController.TakeDamage(damage);
         }
         Destroy(gameObject);
     }

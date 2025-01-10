@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 407773493538463314}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 7655413154602075909}
   - component: {fileID: 4379682590064425939}
   - component: {fileID: 8111467274742765946}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 1365847461459863429}
   - component: {fileID: 491230505486204312}
   - component: {fileID: 8622746332279714917}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,7 +228,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8522874408882050812}
   - component: {fileID: 7017139804768895174}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: nut_blood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -331,7 +331,7 @@ GameObject:
   - component: {fileID: 6791178175934494695}
   - component: {fileID: 2943555870834760444}
   - component: {fileID: 3450413494818161694}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -481,6 +481,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7348523938625498287, guid: ab66f21603d950443a5cf86dda14506d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -6932044230809245262, guid: ab66f21603d950443a5cf86dda14506d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -6932044230809245262, guid: ab66f21603d950443a5cf86dda14506d, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -501,13 +509,37 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -5177254089752962876, guid: ab66f21603d950443a5cf86dda14506d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -1404754888830181093, guid: ab66f21603d950443a5cf86dda14506d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -722257150668808467, guid: ab66f21603d950443a5cf86dda14506d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -69114734002085553, guid: ab66f21603d950443a5cf86dda14506d, type: 3}
       propertyPath: m_LocalPosition.y
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -33923999160805475, guid: ab66f21603d950443a5cf86dda14506d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 763650792114540675, guid: ab66f21603d950443a5cf86dda14506d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ab66f21603d950443a5cf86dda14506d, type: 3}
       propertyPath: m_Name
       value: Nut
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ab66f21603d950443a5cf86dda14506d, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ab66f21603d950443a5cf86dda14506d, type: 3}
       propertyPath: m_TagString
@@ -525,6 +557,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: d60aa3070b5e70945aaf78052855518e, type: 2}
+    - target: {fileID: 6837433318307939376, guid: ab66f21603d950443a5cf86dda14506d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6837433318307939376, guid: ab66f21603d950443a5cf86dda14506d, type: 3}
       propertyPath: m_IsActive
       value: 0
