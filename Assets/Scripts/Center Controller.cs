@@ -53,8 +53,8 @@ public class CenterController : MonoBehaviour
         health--;
         if (health <= 0)
         {
-            // ¿é¤F
-            // »Ý­n UI ¼È°±¹CÀ¸¨Ã¦³­«·s¶}©lªº«ö¯Ã
+            // ï¿½ï¿½F
+            // ï¿½Ý­n UI ï¿½È°ï¿½ï¿½Cï¿½ï¿½ï¿½Ã¦ï¿½ï¿½ï¿½ï¿½sï¿½}ï¿½lï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             GameOver();
         }
         Debug.Log("Health" + health);
@@ -63,81 +63,88 @@ public class CenterController : MonoBehaviour
     {
         if (level == 5)
         {
-            // Ä¹¤F
-            // »Ý­n UI ¼È°±¹CÀ¸¨Ã¦³­«·s¶}©lªº«ö¯Ã
+            // Ä¹ï¿½F
+            // ï¿½Ý­n UI ï¿½È°ï¿½ï¿½Cï¿½ï¿½ï¿½Ã¦ï¿½ï¿½ï¿½ï¿½sï¿½}ï¿½lï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             Win();
         }
         else
         {
-            // Ä¹¤F 1 ­Ó level¡A»Ý­n UI ¼È°±¹CÀ¸¨Ã¦³¤U¤@levelªº«ö¶s¡B­«·s¶}©lªº«ö¶s
+            // Ä¹ï¿½F 1 ï¿½ï¿½ levelï¿½Aï¿½Ý­n UI ï¿½È°ï¿½ï¿½Cï¿½ï¿½ï¿½Ã¦ï¿½ï¿½Uï¿½@levelï¿½ï¿½ï¿½ï¿½ï¿½sï¿½Bï¿½ï¿½ï¿½sï¿½}ï¿½lï¿½ï¿½ï¿½ï¿½ï¿½s
             LevelUp();
             level++;
         }
     }
     public void GameOver()
     {
-        // Åã¥Ü¹CÀ¸¥¢±Ñ¤¶­±
+        // ï¿½ï¿½Ü¹Cï¿½ï¿½ï¿½ï¿½ï¿½Ñ¤ï¿½ï¿½ï¿½
         if (gameOverCanvas != null)
         {
+            Cursor.lockState = CursorLockMode.Confined;
             gameOverCanvas.SetActive(true);
         }
         cantPause = true;
-        // ¼È°±¹CÀ¸
+        // ï¿½È°ï¿½ï¿½Cï¿½ï¿½
         Time.timeScale = 0f;
     }
     public void Win()
     {
         if (winCanvas != null)
         {
+            Cursor.lockState = CursorLockMode.Confined;
             winCanvas.SetActive(true);
         }
         cantPause = true;
-        // ¼È°±¹CÀ¸
+        // ï¿½È°ï¿½ï¿½Cï¿½ï¿½
         Time.timeScale = 0f;
     }
     public void LevelUp()
     {
         if (LpCanvas != null)
         {
+            Cursor.lockState = CursorLockMode.Confined;
             LpCanvas.SetActive(true);
         }
         cantPause = true;
-        // ¼È°±¹CÀ¸
+        // ï¿½È°ï¿½ï¿½Cï¿½ï¿½
         Time.timeScale = 0f;
     }
     public void RestartGame_Failed()
     {
         gameOverCanvas.SetActive(false );
-        // «ì´_®É¶¡¬y³u
+        // ï¿½ï¿½_ï¿½É¶ï¿½ï¿½yï¿½u
         Time.timeScale = 1f;
         cantPause = false;
-        // ­«·s¥[¸ü·í«e³õ´º
+        // ï¿½ï¿½ï¿½sï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½eï¿½ï¿½ï¿½ï¿½
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Cursor.lockState = CursorLockMode.Locked;
     }
     public void RestartGame_Win()
     {
         winCanvas.SetActive(false);
-        // «ì´_®É¶¡¬y³u
+        // ï¿½ï¿½_ï¿½É¶ï¿½ï¿½yï¿½u
         Time.timeScale = 1f;
         cantPause = false;
-        // ­«·s¥[¸ü·í«e³õ´º
+        // ï¿½ï¿½ï¿½sï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½eï¿½ï¿½ï¿½ï¿½
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Cursor.lockState = CursorLockMode.Locked;
     }
     public void RestartGame_Lp()
     {
         LpCanvas.SetActive(false);
-        // «ì´_®É¶¡¬y³u
+        // ï¿½ï¿½_ï¿½É¶ï¿½ï¿½yï¿½u
         Time.timeScale = 1f;
         cantPause = false;
-        // ­«·s¥[¸ü·í«e³õ´º
+        // ï¿½ï¿½ï¿½sï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½eï¿½ï¿½ï¿½ï¿½
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Cursor.lockState = CursorLockMode.Locked;
     }
     public void Lp()
     {
         LpCanvas.SetActive(false);
-        // «ì´_®É¶¡¬y³u
+        // ï¿½ï¿½_ï¿½É¶ï¿½ï¿½yï¿½u
         Time.timeScale = 1f;
         cantPause = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
     public bool CantPause()
     {
@@ -145,17 +152,17 @@ public class CenterController : MonoBehaviour
     }
     public void GenerateStars(int starCount)
     {
-        // ²MªÅ¤§«eªº¬P¬P
+        // ï¿½Mï¿½Å¤ï¿½ï¿½eï¿½ï¿½ï¿½Pï¿½P
         foreach (Transform child in starsContainer)
         {
             Destroy(child.gameObject);
         }
 
-        // ®Ú¾Ú¼Æ¶q¥Í¦¨¬P¬P
+        // ï¿½Ú¾Ú¼Æ¶qï¿½Í¦ï¿½ï¿½Pï¿½P
         for (int i = 0; i < starCount; i++)
         {
             Image star = Instantiate(starPrefab, starsContainer);
-            star.transform.localScale = Vector3.one; // ½T«OÁY©ñ¥¿±`
+            star.transform.localScale = Vector3.one; // ï¿½Tï¿½Oï¿½Yï¿½ñ¥¿±`
         }
     }
 }

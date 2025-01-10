@@ -5,32 +5,35 @@ using System.Collections;
 public class Sunflower : MonoBehaviour, Damageable
 {
     public int EnergyCost = 10;
-    public int energyGain = 5;        // ¨C¦¸«ì´_ªº¯à¶q­È
-    public float energyInterval = 5f; // «ì´_¯à¶qªº®É¶¡¶¡¹j¡]¬í¡^
-    public float maxHealth = 100f;   // ³Ì¤j¦å¶q
-    public Slider healthBar;         // ¦å¶q±ø¡]UI Slider¡^
-    public Vector3 healthBarOffset = new Vector3(0, 1.5f, 0); // ¦å¶q±ø°¾²¾
-    //public GameManager gameManager;  // ¹CÀ¸ºÞ²z¾¹¡A¥Î©ó¥þ§½¯à¶qºÞ²z
+    public int energyGain = 5;        // ï¿½Cï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½qï¿½ï¿½
+    public float energyInterval = 5f; // ï¿½ï¿½_ï¿½ï¿½qï¿½ï¿½ï¿½É¶ï¿½ï¿½ï¿½ï¿½jï¿½]ï¿½ï¿½ï¿½^
+    public float maxHealth = 100f;   // ï¿½Ì¤jï¿½ï¿½q
+    public Slider healthBar;         // ï¿½ï¿½qï¿½ï¿½ï¿½]UI Sliderï¿½^
+    public Vector3 healthBarOffset = new Vector3(0, 1.5f, 0); // ï¿½ï¿½qï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    //public GameManager gameManager;  // ï¿½Cï¿½ï¿½ï¿½Þ²zï¿½ï¿½ï¿½Aï¿½Î©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½qï¿½Þ²z
     public Canvas healthBarCanvas;
-
-    private float currentHealth;     // ·í«e¦å¶q
-    private bool isActive = true;    // ±±¨î¦V¤é¸ª¬O§_¥¿±`¤u§@
+    private CenterController gameControl;
+    private float currentHealth;     // ï¿½ï¿½ï¿½eï¿½ï¿½q
+    private bool isActive = true;    // ï¿½ï¿½ï¿½ï¿½Vï¿½é¸ªï¿½Oï¿½_ï¿½ï¿½ï¿½`ï¿½uï¿½@
     private Animator animator;
+    private float timer = 0f;
     void Start()
     {
+        gameControl = GameObject.Find("GameControl").GetComponent<CenterController>();
+
         animator = GetComponent<Animator>();
-        // ªì©l¤Æ¦å¶q
+        // ï¿½ï¿½lï¿½Æ¦ï¿½q
         currentHealth = maxHealth;
         if (healthBar != null)
         {
             healthBar.maxValue = maxHealth;
             healthBar.value = currentHealth;
-            healthBar.gameObject.SetActive(false); // ¦å¶q±øªì©l¬°ÁôÂÃ
+            healthBar.gameObject.SetActive(false); // ï¿½ï¿½qï¿½ï¿½ï¿½ï¿½lï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         }
         if (healthBarCanvas != null)
         {
-            healthBarCanvas.transform.position = transform.position + healthBarOffset; // ªì©l¤Æ¦ì¸m
-            healthBarCanvas.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward); // ´Â¦VÄá¼v¾÷
+            healthBarCanvas.transform.position = transform.position + healthBarOffset; // ï¿½ï¿½lï¿½Æ¦ï¿½m
+            healthBarCanvas.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward); // ï¿½Â¦Vï¿½ï¿½vï¿½ï¿½
         }
         foreach (Transform child in transform)
         {
@@ -46,38 +49,44 @@ public class Sunflower : MonoBehaviour, Damageable
                 break;
             }
         }
-        // ½T«O¹CÀ¸ºÞ²z¾¹¦s¦b
+        // ï¿½Tï¿½Oï¿½Cï¿½ï¿½ï¿½Þ²zï¿½ï¿½ï¿½sï¿½b
         /*if (gameManager == null)
         {
-            Debug.LogError("GameManager ©|¥¼¤À°tµ¹¦V¤é¸ª¡I");
+            Debug.LogError("GameManager ï¿½|ï¿½ï¿½ï¿½ï¿½ï¿½tï¿½ï¿½ï¿½Vï¿½é¸ªï¿½I");
             return;
         }*/
 
-        // ±Ò°Ê©w®É«ì´_¯à¶q
+        // ï¿½Ò°Ê©wï¿½É«ï¿½_ï¿½ï¿½q
         healthBar.gameObject.SetActive(currentHealth < maxHealth);
         StartCoroutine(RestoreEnergyRoutine());
     }
 
     void Update()
     {
-        // ½T«O¦å¶q±ø¦ì¸m©l²×¦b¦V¤é¸ª¤W¤è
+        timer += Time.deltaTime;
+        if(timer >= energyInterval){
+            gameControl.energy += energyGain;
+            timer = 0;
+        }
+        // ï¿½Tï¿½Oï¿½ï¿½qï¿½ï¿½ï¿½ï¿½mï¿½lï¿½×¦bï¿½Vï¿½é¸ªï¿½Wï¿½ï¿½
         healthBar.gameObject.SetActive(currentHealth < maxHealth);
+        
     }
 
     IEnumerator RestoreEnergyRoutine()
     {
         while (isActive)
         {
-            yield return new WaitForSeconds(energyInterval); // ¨C¹j¤@¬q®É¶¡«ì´_¯à¶q
+            yield return new WaitForSeconds(energyInterval); // ï¿½Cï¿½jï¿½@ï¿½qï¿½É¶ï¿½ï¿½ï¿½_ï¿½ï¿½q
             /*if (gameManager != null && isActive)
             {
-                gameManager.AddEnergy(energyGain); // ¼W¥[¯à¶q
-                Debug.Log($"¦V¤é¸ª«ì´_¤F {energyGain} ÂI¯à¶q¡I·í«e¯à¶q¡G{gameManager.GetEnergy()}");
+                gameManager.AddEnergy(energyGain); // ï¿½Wï¿½[ï¿½ï¿½q
+                Debug.Log($"ï¿½Vï¿½é¸ªï¿½ï¿½_ï¿½F {energyGain} ï¿½Iï¿½ï¿½qï¿½Iï¿½ï¿½ï¿½eï¿½ï¿½qï¿½G{gameManager.GetEnergy()}");
             }*/
         }
     }
 
-    // ±µ¨ü¶Ë®`
+    // ï¿½ï¿½ï¿½ï¿½ï¿½Ë®`
     public void TakeDamage(float damage)
     {
         if (!isActive) return;
@@ -90,30 +99,30 @@ public class Sunflower : MonoBehaviour, Damageable
 
         if (healthBar != null)
         {
-            healthBar.value = currentHealth; // §ó·s¦å¶q±ø
+            healthBar.value = currentHealth; // ï¿½ï¿½sï¿½ï¿½qï¿½ï¿½
         }
 
-        Debug.Log($"¦V¤é¸ª¨ü¨ì¤F {damage} ÂI¶Ë®`¡A³Ñ¾l¦å¶q¡G{currentHealth}");
+        Debug.Log($"ï¿½Vï¿½é¸ªï¿½ï¿½ï¿½ï¿½F {damage} ï¿½Iï¿½Ë®`ï¿½Aï¿½Ñ¾lï¿½ï¿½qï¿½G{currentHealth}");
 
-        // ¦pªG¦å¶qÂk¹s¡AºR·´¦V¤é¸ª
+        // ï¿½pï¿½Gï¿½ï¿½qï¿½kï¿½sï¿½Aï¿½Rï¿½ï¿½ï¿½Vï¿½é¸ª
         if (currentHealth <= 0)
         {
             DestroySunflower();
         }
     }
 
-    // ºR·´¦V¤é¸ª
+    // ï¿½Rï¿½ï¿½ï¿½Vï¿½é¸ª
     private void DestroySunflower()
     {
-        Debug.Log("¦V¤é¸ª³QºR·´¡I");
-        isActive = false; // °±¤î«ì´_¯à¶q
+        Debug.Log("ï¿½Vï¿½é¸ªï¿½Qï¿½Rï¿½ï¿½ï¿½I");
+        isActive = false; // ï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½q
 
-        // ¼½©ñºR·´®ÄªG¡]¦pªG¦³²É¤l©Î­µ®Ä¡A¥i¥H¦b³o¸Ì²K¥[¡^
+        // ï¿½ï¿½ï¿½ï¿½Rï¿½ï¿½ï¿½ÄªGï¿½]ï¿½pï¿½Gï¿½ï¿½ï¿½É¤lï¿½Î­ï¿½ï¿½Ä¡Aï¿½iï¿½Hï¿½bï¿½oï¿½Ì²Kï¿½[ï¿½^
         if (healthBar != null)
         {
-            Destroy(healthBar.gameObject); // §R°£¦å¶q±ø
+            Destroy(healthBar.gameObject); // ï¿½Rï¿½ï¿½ï¿½ï¿½qï¿½ï¿½
         }
-        Destroy(gameObject); // §R°£¦V¤é¸ª
+        Destroy(gameObject); // ï¿½Rï¿½ï¿½ï¿½Vï¿½é¸ª
     }
 
     public int TakeEnergyCost()

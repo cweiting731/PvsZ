@@ -210,7 +210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d27021cd19462844c9401ba927e7e80d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.602
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d27021cd19462844c9401ba927e7e80d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -301,7 +301,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 36
   m_CollisionDetection: 0
 --- !u!65 &3952280398982526746
 BoxCollider:
@@ -320,7 +320,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 2.0625424, y: 2.3608408, z: 1.0357656}
   m_Center: {x: -0.00000023841858, y: 0, z: 0}
@@ -340,7 +340,7 @@ MonoBehaviour:
   explosionRadius: 10
   explosionEffect: {fileID: 4657669953071747285, guid: dbfc287961760484a846830e236b3c8b, type: 3}
   explosionLightPrefab: {fileID: 90413341018588491, guid: 66f195382c64945439849743ee5868f9, type: 3}
-  EnegyConst: 50
+  EnergyCost: 50
   rowStartZ: -100
   rowEndZ: 100
   step: 1

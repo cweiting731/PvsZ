@@ -3,9 +3,9 @@ using System.Collections;
 
 public class ChiliBomb : MonoBehaviour, Damageable
 {
-    public float explosionDelay = 1f;  // Ãz¬µ©µ¿ð®É¶¡
-    public float explosionRadius = 10f; // Ãz¬µ½d³ò
-    public ParticleSystem explosionEffect; // Ãz¬µ®ÄªG
+    public float explosionDelay = 1f;  // ï¿½zï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¶ï¿½
+    public float explosionRadius = 10f; // ï¿½zï¿½ï¿½ï¿½dï¿½ï¿½
+    public ParticleSystem explosionEffect; // ï¿½zï¿½ï¿½ï¿½ÄªG
     public GameObject explosionLightPrefab;
     public int EnergyCost = 50;
     public float rowStartZ = -100f;
@@ -14,7 +14,7 @@ public class ChiliBomb : MonoBehaviour, Damageable
 
     void Start()
     {
-        // ³]¸m­Ë­p®É¤ÞÃz
+        // ï¿½]ï¿½mï¿½Ë­pï¿½É¤ï¿½ï¿½z
         Invoke("Explode", explosionDelay);
     }
 
@@ -26,34 +26,34 @@ public class ChiliBomb : MonoBehaviour, Damageable
             Light pointLight = lightObject.GetComponent<Light>();
             if (pointLight != null)
             {
-                StartCoroutine(FadeAndDestroyLight(pointLight)); // º¥ÅÜº¶·À
+                StartCoroutine(FadeAndDestroyLight(pointLight)); // ï¿½ï¿½ï¿½Üºï¿½ï¿½ï¿½
             }
-            Destroy(lightObject, 1f); // °²³]¥ú®Ä«ùÄò 2 ¬í«á§R°£
+            Destroy(lightObject, 1f); // ï¿½ï¿½ï¿½]ï¿½ï¿½ï¿½Ä«ï¿½ï¿½ï¿½ 2 ï¿½ï¿½ï¿½ï¿½Rï¿½ï¿½
         }
 
         TriggerRowExplosion();
 
-        // Àò¨ú¬µ¼u©Ò¦bªº Y ¶b
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½uï¿½Ò¦bï¿½ï¿½ Y ï¿½b
         float bombX = transform.position.x;
 
-        // ¹M¾ú©Ò¦³íL«Í
+        // ï¿½Mï¿½ï¿½ï¿½Ò¦ï¿½ï¿½Lï¿½ï¿½
         GameObject[] zombies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject zombie in zombies)
         {
-            // ¦pªGíL«Í¦b¦P¤@±Æ¡AºR·´¥¦
-            if (Mathf.Abs(zombie.transform.position.x - bombX) <= 0.5f) // °²³]±Æªº°ª«×¤¹³\¤p»~®t
+            // ï¿½pï¿½Gï¿½Lï¿½Í¦bï¿½Pï¿½@ï¿½Æ¡Aï¿½Rï¿½ï¿½ï¿½ï¿½
+            if (Mathf.Abs(zombie.transform.position.x - bombX) <= 1.5f) // ï¿½ï¿½ï¿½]ï¿½Æªï¿½ï¿½ï¿½ï¿½×¤ï¿½ï¿½\ï¿½pï¿½~ï¿½t
             {
                 Destroy(zombie);
             }
         }
 
-        // ºR·´»¶´Ô¬µ¼u
+        // ï¿½Rï¿½ï¿½ï¿½ï¿½ï¿½Ô¬ï¿½ï¿½u
         Destroy(gameObject);
     }
 
     IEnumerator FadeAndDestroyLight(Light light)
     {
-        float fadeDuration = 1f; // ¥ú®Ä«ùÄò®É¶¡
+        float fadeDuration = 1f; // ï¿½ï¿½ï¿½Ä«ï¿½ï¿½ï¿½É¶ï¿½
         float initialIntensity = light.intensity;
 
         for (float t = 0; t < fadeDuration; t += Time.deltaTime)
@@ -63,15 +63,15 @@ public class ChiliBomb : MonoBehaviour, Damageable
         }
 
         light.intensity = 0;
-        Destroy(light.gameObject); // ³Ì«á¾P·´¥ú®Ä
+        Destroy(light.gameObject); // ï¿½Ì«ï¿½Pï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     }
     void TriggerRowExplosion()
     {
-        // Àò¨ú¬µ¼u©Ò¦bªº Y ¶b
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½uï¿½Ò¦bï¿½ï¿½ Y ï¿½b
         float bombX = transform.position.x;
         float bombY = transform.position.y;
 
-        // ¹M¾ú¾ã±Æ½d³ò¡A³v­Ó¼½©ñ¯S®Ä
+        // ï¿½Mï¿½ï¿½ï¿½ï¿½Æ½dï¿½ï¿½Aï¿½vï¿½Ó¼ï¿½ï¿½ï¿½Sï¿½ï¿½
         for (float z = rowStartZ; z <= rowEndZ; z += step)
         {
             TriggerExplosionEffect(new Vector3(bombX, bombY, z));
@@ -80,11 +80,11 @@ public class ChiliBomb : MonoBehaviour, Damageable
 
     void TriggerExplosionEffect(Vector3 position)
     {
-        // ¼½©ñ²É¤l¯S®Ä
+        // ï¿½ï¿½ï¿½ï¿½É¤lï¿½Sï¿½ï¿½
         if (explosionEffect != null)
         {
             ParticleSystem instantiatedEffect = Instantiate(explosionEffect, position, Quaternion.identity);
-            Destroy(instantiatedEffect.gameObject, instantiatedEffect.main.duration); // ²É¤l¨t²Î«ùÄò®É¶¡«á§R°£
+            Destroy(instantiatedEffect.gameObject, instantiatedEffect.main.duration); // ï¿½É¤lï¿½tï¿½Î«ï¿½ï¿½ï¿½É¶ï¿½ï¿½ï¿½Rï¿½ï¿½
         }
     }
 

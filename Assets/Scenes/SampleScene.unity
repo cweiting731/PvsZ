@@ -613,7 +613,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &55694756
 Transform:
   m_ObjectHideFlags: 0
@@ -651,7 +651,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &74558912
 Transform:
   m_ObjectHideFlags: 0
@@ -1021,7 +1021,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 890341967}
+      - m_Target: {fileID: 890341968}
         m_TargetAssemblyTypeName: CenterController, Assembly-CSharp
         m_MethodName: RestartGame_Lp
         m_Mode: 1
@@ -1134,7 +1134,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 890341967}
+      - m_Target: {fileID: 890341968}
         m_TargetAssemblyTypeName: CenterController, Assembly-CSharp
         m_MethodName: RestartGame_Failed
         m_Mode: 1
@@ -2489,11 +2489,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4264815785692533376, guid: 042a98420114e9240b573624ca92cc3a, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4264815785692533376, guid: 042a98420114e9240b573624ca92cc3a, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6325779045382225874, guid: 042a98420114e9240b573624ca92cc3a, type: 3}
       propertyPath: m_Name
@@ -2583,7 +2583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   continued: {fileID: 1150086061}
   restart: {fileID: 552512149}
-  Canvas: {fileID: 1055162450}
+  Canvas: {fileID: 300110758}
   pause: {fileID: 1070599772}
 --- !u!4 &890341965
 Transform:
@@ -2651,8 +2651,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a37fe56153ee66429340838af8608fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 1
-  energy: 50
+  level: 5
+  energy: 50000
   health: 15
   gameOverCanvas: {fileID: 1775969268}
   winCanvas: {fileID: 416876563}
@@ -3474,14 +3474,14 @@ RectTransform:
   m_GameObject: {fileID: 1070599770}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 3, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.33333334, y: 1, z: 0.33333334}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 488038907}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 308, y: 292}
+  m_AnchoredPosition: {x: 360, y: 188}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1070599772
@@ -3547,7 +3547,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1070599770}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -3856,7 +3856,7 @@ MonoBehaviour:
   spawner_three: {fileID: 1989779455}
   spawner_four: {fileID: 1179129420}
   waveDuration: 10
-  waveInterval: 60
+  waveInterval: 11
   centerController: {fileID: 890341968}
 --- !u!1001 &1224516472
 PrefabInstance:
@@ -4098,7 +4098,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 890341967}
+      - m_Target: {fileID: 890341968}
         m_TargetAssemblyTypeName: CenterController, Assembly-CSharp
         m_MethodName: RestartGame_Win
         m_Mode: 1
@@ -4216,7 +4216,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 204}
+  m_AnchoredPosition: {x: 0, y: 152}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1428444900
@@ -4994,7 +4994,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1656425836}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 890341968}
+        m_TargetAssemblyTypeName: CenterController, Assembly-CSharp
+        m_MethodName: Lp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1656425836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5737,13 +5749,13 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1489338712}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -252, y: 192}
+  m_AnchoredPosition: {x: -291, y: 198}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2055296123
@@ -5831,7 +5843,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -7.189556, w: -35.149677}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -6070,7 +6082,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -6179,11 +6191,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1365847461459863429, guid: 8bc1bf87764b29248823395c4ecd03e0, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1365847461459863429, guid: 8bc1bf87764b29248823395c4ecd03e0, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3653590846644044271, guid: 8bc1bf87764b29248823395c4ecd03e0, type: 3}
       propertyPath: m_AnchorMax.x
@@ -6401,11 +6413,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8792399157925119419, guid: 27c4a3d2f5ab7c646832aeb0f1697c0c, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8792399157925119419, guid: 27c4a3d2f5ab7c646832aeb0f1697c0c, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6422,11 +6434,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 421186169048046141, guid: ec33bd86d0c35484691e67383e7c6989, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 421186169048046141, guid: ec33bd86d0c35484691e67383e7c6989, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5554818399086415563, guid: ec33bd86d0c35484691e67383e7c6989, type: 3}
       propertyPath: m_Name
@@ -6504,11 +6516,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1365847461459863429, guid: 8bc1bf87764b29248823395c4ecd03e0, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1365847461459863429, guid: 8bc1bf87764b29248823395c4ecd03e0, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6791178175934494695, guid: 8bc1bf87764b29248823395c4ecd03e0, type: 3}
       propertyPath: m_Camera
@@ -6582,11 +6594,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5560798167938173501, guid: 12dde7d200321094a91a6ec712c77e08, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5560798167938173501, guid: 12dde7d200321094a91a6ec712c77e08, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8361479481936061594, guid: 12dde7d200321094a91a6ec712c77e08, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6712,7 +6724,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7516685345757199192, guid: bd4ca08e5f9e376428e401fbaa196381, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8298247673097533604, guid: bd4ca08e5f9e376428e401fbaa196381, type: 3}
       propertyPath: m_LocalPosition.x

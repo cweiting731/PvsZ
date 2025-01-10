@@ -16,7 +16,7 @@ public class UIControl : MonoBehaviour
     {
         system = EventSystem.current;
         Canvas.SetActive(false);
-        gamecontrol = FindObjectOfType<CenterController>();
+        gamecontrol = GameObject.Find("GameControl").GetComponent<CenterController>();
     }
 
     void Update()
@@ -34,12 +34,14 @@ public class UIControl : MonoBehaviour
             else
             {
                 PauseGame();
+                Cursor.lockState = CursorLockMode.Confined;
             }
         }
     }
 
     public void ResumeGame()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         Canvas.SetActive(false);
         Time.timeScale = 1;
         isPaused = false;
@@ -48,6 +50,7 @@ public class UIControl : MonoBehaviour
 
     public void RestartGame()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         Canvas.SetActive(false);
         isPaused = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

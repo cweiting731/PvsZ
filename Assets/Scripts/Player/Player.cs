@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     public CenterController centerController;
     void Start()
     {
-        // Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()

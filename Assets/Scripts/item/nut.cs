@@ -38,6 +38,7 @@ public class Nut : MonoBehaviour, Damageable
                 if (canvas != null && canvas.renderMode == RenderMode.WorldSpace)
                 {
                     canvas.worldCamera = Camera.main;
+                    // canvas.worldCamera = GameObject.Find("canvaCamera").GetComponent<Camera>();
                     rt.localPosition = new Vector3(0f, 0.25f, 0f);
                 }
                 break;
