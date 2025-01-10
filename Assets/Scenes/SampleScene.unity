@@ -3137,7 +3137,7 @@ MonoBehaviour:
   spawner_four: {fileID: 1179129420}
   waveDuration: 10
   waveInterval: 0
-  centerController: {fileID: 0}
+  centerController: {fileID: 890341968}
 --- !u!1001 &1224516472
 PrefabInstance:
   m_ObjectHideFlags: 0
