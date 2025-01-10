@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1133082269183045266}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0.169, y: 0, z: -0.267}
+  m_LocalPosition: {x: 0.169, y: 0.573, z: -0.2565}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -439,7 +439,7 @@ MonoBehaviour:
   thisCollider: {fileID: 6751553534790365307}
   attackInterval: 3
   maxHealth: 100
-  energyCost: 20
+  EnergyCost: 20
   muzzle: {fileID: 1302513940094205212}
   healthBar: {fileID: 8090725370429935797}
   offset: {x: 0, y: 1, z: 0}
