@@ -66,4 +66,9 @@ public class TestItemWannaPlayApex : MonoBehaviour, Damageable
         isDead = true;
         Destroy(gameObject, 0.1f);
     }
+
+    public int TakeEnergyCost()
+    {
+        return 0;
+    }
 }

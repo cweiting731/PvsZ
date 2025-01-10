@@ -144,5 +144,10 @@ public class Chomper : MonoBehaviour, Damageable
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, eatRadius);
     }
+
+    public int TakeEnergyCost()
+    {
+        return EnergyCost;
+    }
 }
 
