@@ -4,7 +4,7 @@ using System.Collections;
 
 public class Sunflower : MonoBehaviour, Damageable
 {
-    public int enegyCost = 10;
+    public int EnergyCost = 10;
     public int energyGain = 5;        // 每次恢復的能量值
     public float energyInterval = 5f; // 恢復能量的時間間隔（秒）
     public float maxHealth = 100f;   // 最大血量
