@@ -116,7 +116,7 @@ public class Chomper : MonoBehaviour, Damageable
     private void EatZombie(GameObject zombie)
     {
         Debug.Log("���H��Y���F�@���L�͡I");
-
+        Transform parent = zombie.transform.parent;
         // ����S��
         /*if (eatEffect != null)
         {
@@ -125,6 +125,11 @@ public class Chomper : MonoBehaviour, Damageable
 
         // �R���L��
         Destroy(zombie);
+
+        if (parent != null)
+        {
+            Destroy(parent.gameObject);
+        }
 
         // �}�l�N�o
         StartCoroutine(StartCooldown());
