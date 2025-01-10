@@ -69,11 +69,12 @@ public class ChiliBomb : MonoBehaviour, Damageable
     {
         // 獲取炸彈所在的 Y 軸
         float bombX = transform.position.x;
+        float bombY = transform.position.y;
 
         // 遍歷整排範圍，逐個播放特效
         for (float z = rowStartZ; z <= rowEndZ; z += step)
         {
-            TriggerExplosionEffect(new Vector3(bombX, 0, z));
+            TriggerExplosionEffect(new Vector3(bombX, bombY, z));
         }
     }
 
