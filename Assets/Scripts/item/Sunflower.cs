@@ -63,6 +63,8 @@ public class Sunflower : MonoBehaviour, Damageable
 
     void Update()
     {
+        healthBarCanvas.transform.rotation = Quaternion.identity;
+
         timer += Time.deltaTime;
         if(timer >= energyInterval){
             gameControl.energy += energyGain;

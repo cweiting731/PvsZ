@@ -1,4 +1,3 @@
-using UnityEditor.ShortcutManagement;
 using UnityEngine;
 using System.Collections;
 
@@ -42,20 +41,20 @@ public class SpawnerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (waveTimes < 3) // 3ªiµ²§ô«á´N¤£¥Í¦¨íL«Í¤F
+        if (waveTimes < 3) // 3ï¿½iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½Í¦ï¿½ï¿½Lï¿½Í¤F
         {
             if (Timer >= (waveInterval - 5f))
             {
-                // Åã¥Ü¤å¦r¦b·í«e UI "¤@¤jªiíL«Í¥¿¦b±µªñ"
+                // ï¿½ï¿½Ü¤ï¿½rï¿½bï¿½ï¿½ï¿½e UI "ï¿½@ï¿½jï¿½iï¿½Lï¿½Í¥ï¿½ï¿½bï¿½ï¿½ï¿½ï¿½"
             }
             if (Timer >= waveInterval && waveTimes < 3)
             {
-                // UI "¤@¤jªiíL«Í¥¿¦b±µªñ" ²M°£
+                // UI "ï¿½@ï¿½jï¿½iï¿½Lï¿½Í¥ï¿½ï¿½bï¿½ï¿½ï¿½ï¿½" ï¿½Mï¿½ï¿½
                 isWave = true;
                 StartCoroutine(waveSpawn());
                 Timer = 0f;
                 waveTimes++;
-                Debug.Log("Wave ¶}©l" + waveTimes);
+                Debug.Log("Wave ï¿½}ï¿½l" + waveTimes);
             }
             if (spawnTimer >= spawnInterval && !isWave)
             {
@@ -67,7 +66,7 @@ public class SpawnerManager : MonoBehaviour
         }
         else
         {
-            // ³õ¤¤¨SíL«Í¤F ³qÃö¤@­Ó level
+            // ï¿½ï¿½ï¿½ï¿½ï¿½Sï¿½Lï¿½Í¤F ï¿½qï¿½ï¿½ï¿½@ï¿½ï¿½ level
             //Debug.Log("wait zombie clear" + spawner_zero.IsZombieEmpty() + spawner_one.IsZombieEmpty() + spawner_two.IsZombieEmpty() + spawner_three.IsZombieEmpty() + spawner_four.IsZombieEmpty());
             if (spawner_zero.IsZombieEmpty() && spawner_one.IsZombieEmpty() && spawner_two.IsZombieEmpty() && spawner_three.IsZombieEmpty() && spawner_four.IsZombieEmpty())
             {
@@ -85,7 +84,7 @@ public class SpawnerManager : MonoBehaviour
     {
         Shuffle(rows);
         
-        int zombieNum = (level < 5) ? level: 5; // zombie¤W­­¬°5°¦
+        int zombieNum = (level < 5) ? level: 5; // zombieï¿½Wï¿½ï¿½ï¿½ï¿½5ï¿½ï¿½
 
         for (int i = 0; i < zombieNum; i++)
         {
@@ -141,11 +140,11 @@ public class SpawnerManager : MonoBehaviour
         while (elapsedTime < waveDuration)
         {
             SpawnZombie();
-            yield return new WaitForSeconds(1f); // µ¥«Ý1¬í
+            yield return new WaitForSeconds(1f); // ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½
             elapsedTime += 1f;
         }
 
-        Debug.Log("waveµ²§ô");
+        Debug.Log("waveï¿½ï¿½ï¿½ï¿½");
         isWave = false;
     }
 }

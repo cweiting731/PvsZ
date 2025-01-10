@@ -51,6 +51,8 @@ public class PeaShooter : MonoBehaviour, Damageable
     // Update is called once per frame
     void Update()
     {
+        healthBarCanvas.transform.rotation = Quaternion.identity;
+
         healthBar.gameObject.SetActive(currentHealth < maxHealth);
         if (attackTimer >= attackInterval)
         {

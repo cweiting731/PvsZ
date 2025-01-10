@@ -12,6 +12,7 @@ public class UIControl : MonoBehaviour
     public GameObject Canvas;
     public Button pause;
     private CenterController gamecontrol;
+    private bool cantShow = false;
     void Start()
     {
         system = EventSystem.current;
@@ -42,6 +43,7 @@ public class UIControl : MonoBehaviour
     public void ResumeGame()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        cantShow = false;
         Canvas.SetActive(false);
         Time.timeScale = 1;
         isPaused = false;
@@ -51,6 +53,7 @@ public class UIControl : MonoBehaviour
     public void RestartGame()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        cantShow = false;
         Canvas.SetActive(false);
         isPaused = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -63,6 +66,11 @@ public class UIControl : MonoBehaviour
         Canvas.SetActive(true); // ��ܼȰ����
         Time.timeScale = 0; // �Ȱ��C���ɶ�
         isPaused = true;
+        cantShow = true;
         Debug.Log("pause");
+    }
+    public bool CantShow()
+    {
+        return cantShow;
     }
 }

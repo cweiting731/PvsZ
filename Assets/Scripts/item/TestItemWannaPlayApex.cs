@@ -39,6 +39,8 @@ public class TestItemWannaPlayApex : MonoBehaviour, Damageable
 
     void Update()
     {
+        healthBarCanvas.transform.rotation = Quaternion.identity;
+
         healthBar.gameObject.SetActive(currentHealth < maxHealth);
     }
 

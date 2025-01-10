@@ -50,6 +50,8 @@ public class Nut : MonoBehaviour, Damageable
     }
     void Update()
     {
+        // healthBarCanvas.transform.LookAt(transform.position + Camera.main.transform.forward);
+        healthBarCanvas.transform.rotation = Quaternion.identity;
         healthBar.gameObject.SetActive(currentHealth < maxHealth);
         // if (transform.position.y >= 0.2)
         // {

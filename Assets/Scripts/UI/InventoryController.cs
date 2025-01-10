@@ -12,6 +12,8 @@ public class InventoryController : MonoBehaviour
     private int selectedIndex;
     private GameObject[] inventorySlots = new GameObject[9];
     private Item[] items = new Item[9];
+    private CenterController gamecontrol;
+    private UIControl uicontrol;
     private Dictionary<int, int[]> indexToRectLF = new Dictionary<int, int[]>{
         { 0, new int[] { 0, 740 } },
         { 1, new int[] { 90, 650 } },
@@ -25,6 +27,8 @@ public class InventoryController : MonoBehaviour
     };
     void Start()
     {
+        gamecontrol = GameObject.Find("GameControl").GetComponent<CenterController>();
+        uicontrol = GameObject.Find("GameControl").GetComponent<UIControl>();
         if (slots == null || inventory == null || inventorySelected == null)
         {
             Debug.LogError("necessary object(s) are not binded");
@@ -66,6 +70,16 @@ public class InventoryController : MonoBehaviour
 
     void Update()
     {
+        if (gamecontrol.CantPause() || uicontrol.CantShow()) 
+        {
+            inventory.SetActive(false);
+            slots.SetActive(false);
+        }
+        else 
+        {
+            inventory.SetActive(true);
+            slots.SetActive(true);
+        }
         if (Time.timeScale == 0f) return;    // pausing
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         if (scroll > 0f)
@@ -101,6 +115,7 @@ public class InventoryController : MonoBehaviour
                 SelectByIndex(key - 1);
             }
         }
+        
     }
 
     void SelectByIndex(int index)

@@ -4,24 +4,24 @@ using System.Collections;
 
 public class Chomper : MonoBehaviour, Damageable
 {
-    public float maxHealth = 100f; // ³Ì¤j¦å¶q
-    public Slider healthBar;       // ¦å¶q±ø
-    public float cooldownTime = 5f; // §Þ¯à§N«o®É¶¡
-    public float eatRadius = 1.5f; // ¦Y±¼íL«Íªº½d³ò
-    //public ParticleSystem eatEffect; // ¦Y±¼íL«Íªº¯S®Ä
+    public float maxHealth = 100f; // ï¿½Ì¤jï¿½ï¿½q
+    public Slider healthBar;       // ï¿½ï¿½qï¿½ï¿½
+    public float cooldownTime = 5f; // ï¿½Þ¯ï¿½Nï¿½oï¿½É¶ï¿½
+    public float eatRadius = 1.5f; // ï¿½Yï¿½ï¿½ï¿½Lï¿½Íªï¿½ï¿½dï¿½ï¿½
+    //public ParticleSystem eatEffect; // ï¿½Yï¿½ï¿½ï¿½Lï¿½Íªï¿½ï¿½Sï¿½ï¿½
     public Canvas healthBarCanvas;
     public Vector3 offset = new Vector3(0, 1f, 0);
     public int EnergyCost = 30;
 
-    private float currentHealth;   // ·í«e¦å¶q
-    private bool isOnCooldown = false; // §Þ¯à¬O§_¦b§N«o¤¤
-    private bool isActive = true;  // ¬O§_¯à¥¿±`¤u§@
+    private float currentHealth;   // ï¿½ï¿½ï¿½eï¿½ï¿½q
+    private bool isOnCooldown = false; // ï¿½Þ¯ï¿½Oï¿½_ï¿½bï¿½Nï¿½oï¿½ï¿½
+    private bool isActive = true;  // ï¿½Oï¿½_ï¿½à¥¿ï¿½`ï¿½uï¿½@
     private Animator animator;
 
     void Start()
     {
         animator = GetComponent<Animator>();
-        // ªì©l¤Æ¦å¶q
+        // ï¿½ï¿½lï¿½Æ¦ï¿½q
         currentHealth = maxHealth;
         if (healthBar != null)
         {
@@ -30,8 +30,8 @@ public class Chomper : MonoBehaviour, Damageable
         }
         if (healthBarCanvas != null)
         {
-            healthBarCanvas.transform.position = transform.position + offset; // ªì©l¤Æ¦ì¸m
-            healthBarCanvas.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward); // ´Â¦VÄá¼v¾÷
+            healthBarCanvas.transform.position = transform.position + offset; // ï¿½ï¿½lï¿½Æ¦ï¿½m
+            healthBarCanvas.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward); // ï¿½Â¦Vï¿½ï¿½vï¿½ï¿½
         }
         foreach (Transform child in transform)
         {
@@ -52,9 +52,11 @@ public class Chomper : MonoBehaviour, Damageable
 
     void Update()
     {
+        healthBarCanvas.transform.rotation = Quaternion.identity;
+
         healthBar.gameObject.SetActive(currentHealth < maxHealth);
 
-        // ¥D°ÊÀË´ú¼Ä¤H¨Ã§ðÀ»
+        // ï¿½Dï¿½ï¿½ï¿½Ë´ï¿½ï¿½Ä¤Hï¿½Ã§ï¿½ï¿½ï¿½
         if (!isOnCooldown && isActive)
         {
             DetectAndAttackEnemy();
@@ -74,9 +76,9 @@ public class Chomper : MonoBehaviour, Damageable
             healthBar.value = currentHealth;
         }
 
-        Debug.Log($"­¹¤Hªá¨ü¨ì¤F {damage} ÂI¶Ë®`¡A³Ñ¾l¦å¶q¡G{currentHealth}");
+        Debug.Log($"ï¿½ï¿½ï¿½Hï¿½ï¿½ï¿½ï¿½ï¿½F {damage} ï¿½Iï¿½Ë®`ï¿½Aï¿½Ñ¾lï¿½ï¿½qï¿½G{currentHealth}");
 
-        // ¦pªG¦å¶qÂk¹s¡AºR·´­¹¤Hªá
+        // ï¿½pï¿½Gï¿½ï¿½qï¿½kï¿½sï¿½Aï¿½Rï¿½ï¿½ï¿½ï¿½ï¿½Hï¿½ï¿½
         if (currentHealth <= 0)
         {
             DestroyChomper();
@@ -85,62 +87,62 @@ public class Chomper : MonoBehaviour, Damageable
 
     private void DestroyChomper()
     {
-        Debug.Log("­¹¤Hªá³QºR·´¡I");
+        Debug.Log("ï¿½ï¿½ï¿½Hï¿½ï¿½Qï¿½Rï¿½ï¿½ï¿½I");
         isActive = false;
 
-        // §R°£¦å¶q±ø
+        // ï¿½Rï¿½ï¿½ï¿½ï¿½qï¿½ï¿½
         if (healthBar != null)
         {
             Destroy(healthBar.gameObject);
         }
 
-        // ¼½©ñºR·´®ÄªG¡]¥i¿ï¡^
+        // ï¿½ï¿½ï¿½ï¿½Rï¿½ï¿½ï¿½ÄªGï¿½]ï¿½iï¿½ï¿½^
         Destroy(gameObject);
     }
     private void DetectAndAttackEnemy()
     {
-        // ÀË´úªþªñªº¼Ä¤H
+        // ï¿½Ë´ï¿½ï¿½ï¿½ï¿½ñªº¼Ä¤H
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, eatRadius);
         foreach (Collider hitCollider in hitColliders)
         {
             if (hitCollider.CompareTag("Enemy"))
             {
                 EatZombie(hitCollider.gameObject);
-                break; // ¨C¦¸¥u§ðÀ»¤@­Ó¼Ä¤H
+                break; // ï¿½Cï¿½ï¿½ï¿½uï¿½ï¿½ï¿½ï¿½ï¿½@ï¿½Ó¼Ä¤H
             }
         }
     }
 
     private void EatZombie(GameObject zombie)
     {
-        Debug.Log("­¹¤Hªá¦Y±¼¤F¤@­ÓíL«Í¡I");
+        Debug.Log("ï¿½ï¿½ï¿½Hï¿½ï¿½Yï¿½ï¿½ï¿½Fï¿½@ï¿½ï¿½ï¿½Lï¿½Í¡I");
 
-        // ¼½©ñ¯S®Ä
+        // ï¿½ï¿½ï¿½ï¿½Sï¿½ï¿½
         /*if (eatEffect != null)
         {
             Instantiate(eatEffect, zombie.transform.position, Quaternion.identity);
         }*/
 
-        // ºR·´íL«Í
+        // ï¿½Rï¿½ï¿½ï¿½Lï¿½ï¿½
         Destroy(zombie);
 
-        // ¶}©l§N«o
+        // ï¿½}ï¿½lï¿½Nï¿½o
         StartCoroutine(StartCooldown());
     }
 
     private IEnumerator StartCooldown()
     {
         isOnCooldown = true;
-        Debug.Log($"§Þ¯à§N«o¤¤¡A»Ýµ¥«Ý {cooldownTime} ¬í");
+        Debug.Log($"ï¿½Þ¯ï¿½Nï¿½oï¿½ï¿½ï¿½Aï¿½Ýµï¿½ï¿½ï¿½ {cooldownTime} ï¿½ï¿½");
 
         yield return new WaitForSeconds(cooldownTime);
 
         isOnCooldown = false;
-        Debug.Log("§Þ¯à§N«oµ²§ô¡A¥i¥H¦A¦¸¨Ï¥Î¡I");
+        Debug.Log("ï¿½Þ¯ï¿½Nï¿½oï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½iï¿½Hï¿½Aï¿½ï¿½ï¿½Ï¥Î¡I");
     }
     private void OnDrawGizmosSelected()
     {
-        // ¦b³õ´º¤¤Åã¥Ü§ðÀ»½d³ò
+        // ï¿½bï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü§ï¿½ï¿½ï¿½ï¿½dï¿½ï¿½
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, eatRadius);
     }
