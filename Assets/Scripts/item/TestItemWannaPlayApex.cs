@@ -5,6 +5,7 @@ public class TestItemWannaPlayApex : MonoBehaviour, Damageable
 {
     public float maxHealth = 100;
     public Slider healthBar;
+    public int EnergyCost = 1;
     public Vector3 offset;
     public Canvas healthBarCanvas;
     private bool isDead = false;
@@ -43,7 +44,8 @@ public class TestItemWannaPlayApex : MonoBehaviour, Damageable
 
     public void TakeDamage(float damage)
     {
-        if (isDead) return;
+        // Debug.Log("ApexHurt");
+        // if (isDead) return;
         currentHealth -= damage;
         if (healthBar != null)
         {
@@ -64,11 +66,12 @@ public class TestItemWannaPlayApex : MonoBehaviour, Damageable
             bc.enabled = false;
         }
         isDead = true;
+        Destroy(healthBar.gameObject, 0.1f);
         Destroy(gameObject, 0.1f);
     }
 
     public int TakeEnergyCost()
     {
-        return 0;
+        return EnergyCost;
     }
 }
