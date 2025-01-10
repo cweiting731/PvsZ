@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public float placeItemDistance = 5f;
     public Transform followTarget;
     public InventoryController inventoryController;
+    public CenterController centerController;
     void Start()
     {
         // Cursor.lockState = CursorLockMode.Locked;
@@ -67,7 +68,17 @@ public class Player : MonoBehaviour
                     {
                         // placePosition.y = inventoryController.GetItem().prefab.transform.position.y;
                         // placePosition.y = inventoryController.GetItem().prefab.transform.position.y;
-                        Instantiate(inventoryController.GetItem().prefab, placePosition, Quaternion.identity);
+                        GameObject prefab = inventoryController.GetItem().prefab;
+                        Damageable item = prefab.transform.GetChild(0).GetComponent<Damageable>();
+                        if (item != null)
+                        {
+                            if (item.TakeEnergyCost() <= centerController.energy)
+                            {
+                                Instantiate(prefab, placePosition, Quaternion.identity);
+                                centerController.energy -= item.TakeEnergyCost();
+                            }
+                        }
+                        else Debug.Log("can't not find item");
                     }
                 }
             }

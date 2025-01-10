@@ -100,9 +100,10 @@ GameObject:
   - component: {fileID: 6192474869744489889}
   - component: {fileID: 1503525540108283910}
   - component: {fileID: 3413492242182821048}
+  - component: {fileID: 9199565979037641856}
   m_Layer: 0
   m_Name: box
-  m_TagString: Untagged
+  m_TagString: item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,13 +121,13 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 4911292300622767908}
   - {fileID: 8858138396169467556}
   - {fileID: 542980084845599067}
   - {fileID: 3540724140069127404}
   - {fileID: 100997625141666055}
   - {fileID: 4027240975810751823}
   - {fileID: 5939678256436239282}
-  - {fileID: 4911292300622767908}
   m_Father: {fileID: 6330810128539538309}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &225906448344578593
@@ -201,7 +202,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.1, y: 1.1, z: 1.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3413492242182821048
 Rigidbody:
@@ -230,6 +231,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &9199565979037641856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2487054013519894655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2fe5ded224f5594c8a60886706da262, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  healthBar: {fileID: 3558772745142208398}
+  EnergyCost: 0
+  offset: {x: 0, y: 0, z: 0}
+  healthBarCanvas: {fileID: 2389430964986906564}
 --- !u!1 &3406793938031666153
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,7 +431,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6330810128539538309}
-  - component: {fileID: 1891001439614104505}
   m_Layer: 0
   m_Name: TestItemWannaPlayApex
   m_TagString: item
@@ -437,22 +454,6 @@ Transform:
   - {fileID: 7298185132063269721}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1891001439614104505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6325779045382225874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2fe5ded224f5594c8a60886706da262, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  healthBar: {fileID: 3558772745142208398}
-  offset: {x: 0, y: 0, z: 0}
-  healthBarCanvas: {fileID: 2389430964986906564}
 --- !u!1 &6495963534693488988
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,7 +793,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8706563584408536211, guid: 8a8d05ea9250d254389d460f06f6e5ba, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.3932844
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8706563584408536211, guid: 8a8d05ea9250d254389d460f06f6e5ba, type: 3}
       propertyPath: m_LocalRotation.w
@@ -812,11 +813,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8706563584408536211, guid: 8a8d05ea9250d254389d460f06f6e5ba, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.3784425
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8706563584408536211, guid: 8a8d05ea9250d254389d460f06f6e5ba, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.1092608
+      value: 1.5769999
       objectReference: {fileID: 0}
     - target: {fileID: 8706563584408536211, guid: 8a8d05ea9250d254389d460f06f6e5ba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

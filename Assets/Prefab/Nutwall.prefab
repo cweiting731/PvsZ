@@ -356,7 +356,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0.064}
-  m_SizeDelta: {x: 278.6667, y: 483.6667}
+  m_SizeDelta: {x: 155.6, y: 142.15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &6791178175934494695
 Canvas:
@@ -521,18 +521,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: -5177254089752962876, guid: ab66f21603d950443a5cf86dda14506d, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: -1404754888830181093, guid: ab66f21603d950443a5cf86dda14506d, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: -722257150668808467, guid: ab66f21603d950443a5cf86dda14506d, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: -69114734002085553, guid: ab66f21603d950443a5cf86dda14506d, type: 3}
       propertyPath: m_LocalPosition.y
       value: 3
@@ -676,7 +664,7 @@ MonoBehaviour:
   nutWall: {fileID: 1413339231982365434}
   capsuleCollider: {fileID: 7410593127548488182}
   maxHealth: 400
-  EnegyCost: 20
+  EnergyCost: 20
   healthBar: {fileID: 7017139804768895174}
   offset: {x: 0, y: 0, z: 0}
   healthBarCanvas: {fileID: 6791178175934494695}

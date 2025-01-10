@@ -98,5 +98,10 @@ public class Nut : MonoBehaviour, Damageable
         Destroy(healthBar.gameObject, 0.1f);
         Destroy(nutWall.gameObject, 0.1f);
     }
+
+    public int TakeEnergyCost()
+    {
+        return EnergyCost;
+    }
 }
 

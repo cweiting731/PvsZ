@@ -245,8 +245,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   originalSpeed: 0.75
-  originalHealth: 70
-  originalAttack: 18
+  originalHealth: 80
+  originalAttack: 15
   attackInterval: 2
   energyGive: 3
   animator: {fileID: 1700472094813567077}

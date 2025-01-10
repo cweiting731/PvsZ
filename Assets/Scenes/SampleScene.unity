@@ -2544,8 +2544,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
-  energy: 100
-  health: 500
+  energy: 50
+  health: 15
   gameOverCanvas: {fileID: 1775969268}
   winCanvas: {fileID: 416876563}
   LpCanvas: {fileID: 1538956979}
@@ -3703,17 +3703,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnInterval: 10
-  NormalRate: 1
-  GiantRate: 1
-  RunnerRate: 1
-  MinerRate: 1
+  NormalRate: 50
+  GiantRate: 10
+  RunnerRate: 20
+  MinerRate: 10
   spawner_zero: {fileID: 746202509}
   spawner_one: {fileID: 2039630235}
   spawner_two: {fileID: 1980958131}
   spawner_three: {fileID: 1989779455}
   spawner_four: {fileID: 1179129420}
   waveDuration: 10
-  waveInterval: 11
+  waveInterval: 60
   centerController: {fileID: 890341968}
 --- !u!1001 &1224516472
 PrefabInstance:
@@ -4998,6 +4998,7 @@ MonoBehaviour:
   placeItemDistance: 5
   followTarget: {fileID: 1710403941}
   inventoryController: {fileID: 890341966}
+  centerController: {fileID: 890341968}
 --- !u!4 &1747451403 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8818000498215639124, guid: 21d02266118d5cf4d9cbe24850ace904, type: 3}
@@ -5929,6 +5930,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4192139899707371647, guid: 27c4a3d2f5ab7c646832aeb0f1697c0c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8792399157925119419, guid: 27c4a3d2f5ab7c646832aeb0f1697c0c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8792399157925119419, guid: 27c4a3d2f5ab7c646832aeb0f1697c0c, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
