@@ -11,7 +11,7 @@ public class Chomper : MonoBehaviour, Damageable
     //public ParticleSystem eatEffect; // 吃掉殭屍的特效
     public Canvas healthBarCanvas;
     public Vector3 offset = new Vector3(0, 1f, 0);
-    public int EnegyCost = 30;
+    public int EnergyCost = 30;
 
     private float currentHealth;   // 當前血量
     private bool isOnCooldown = false; // 技能是否在冷卻中

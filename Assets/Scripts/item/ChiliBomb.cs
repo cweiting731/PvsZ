@@ -1,13 +1,13 @@
 using UnityEngine;
 using System.Collections;
 
-public class ChiliBomb : MonoBehaviour
+public class ChiliBomb : MonoBehaviour, Damageable
 {
     public float explosionDelay = 1f;  // 爆炸延遲時間
     public float explosionRadius = 10f; // 爆炸範圍
     public ParticleSystem explosionEffect; // 爆炸效果
     public GameObject explosionLightPrefab;
-    public int EnegyConst = 50;
+    public int EnergyCost = 50;
     public float rowStartZ = -100f;
     public float rowEndZ = 100f;
     public float step = 1f;
@@ -85,6 +85,11 @@ public class ChiliBomb : MonoBehaviour
             ParticleSystem instantiatedEffect = Instantiate(explosionEffect, position, Quaternion.identity);
             Destroy(instantiatedEffect.gameObject, instantiatedEffect.main.duration); // 粒子系統持續時間後刪除
         }
+    }
+
+    public void TakeDamage(float damage)
+    {
+
     }
 }
 

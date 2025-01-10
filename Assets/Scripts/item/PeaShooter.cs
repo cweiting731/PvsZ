@@ -7,7 +7,7 @@ public class PeaShooter : MonoBehaviour, Damageable
     public BoxCollider thisCollider;
     public float attackInterval;
     public float maxHealth;
-    public int energyCost = 20;
+    public int EnergyCost = 20;
     public Transform muzzle;
     //
     private float currentHealth;

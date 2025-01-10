@@ -6,7 +6,7 @@ public class Nut : MonoBehaviour, Damageable
     public Transform nutWall;
     public CapsuleCollider capsuleCollider;
     public float maxHealth = 100f; // ���G�𪺪�l��q
-    public int EnegyCost = 20;
+    public int EnergyCost = 20;
     private float currentHealth; // ���e��q
     public Slider healthBar;
     public Vector3 offset = new Vector3(0, 1f, 0);
