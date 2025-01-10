@@ -89,7 +89,7 @@ public class MinerZombie : MonoBehaviour
     {
         if (!firstTouchGround && collision.gameObject.tag == "Ground")
         {
-            rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+            rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
             backToGroundY = transform.position.y;
             transform.position += new Vector3(0, -1, 0) * 1.5f;
             firstTouchGround = true;
@@ -99,7 +99,7 @@ public class MinerZombie : MonoBehaviour
             Debug.Log("Damaged Zombie");
             return;
         }
-        if (collision.gameObject.tag == "EndLine")
+        if (!isStand && collision.gameObject.tag == "EndLine")
         {
             Debug.Log("Miner zombie walk to EndLine");
             isStand = true;
@@ -107,7 +107,7 @@ public class MinerZombie : MonoBehaviour
             moveDirection = new Vector3(0, 0 , -1);
             return;
         }
-        if (isStand && collision.gameObject.tag != "Ground")
+        if (isStand && collision.gameObject.tag != "Ground" && collision.gameObject.tag != "EndLine")
         {
             Debug.Log("OnCollisionEnter: " + collision.gameObject.name);
             speed = 0;
@@ -121,12 +121,6 @@ public class MinerZombie : MonoBehaviour
                 isAttacking = true;
                 attackCoroutine = StartCoroutine(Attack(damageable));
             }
-        }
-        if (isStand && collision.gameObject.tag == "ZombieSpawner") // «Ý³B²z
-        {
-            Debug.Log("Miner walk to Spawner");
-            //centerController.DecreaseHealth();
-            DeleteThis(false);
         }
     }
 
