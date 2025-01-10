@@ -2979,7 +2979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
-  energy: 20000000
+  energy: 100
   health: 15
   gameOverCanvas: {fileID: 1775969268}
   winCanvas: {fileID: 416876563}
@@ -4281,7 +4281,7 @@ MonoBehaviour:
   spawner_three: {fileID: 1989779455}
   spawner_four: {fileID: 1179129420}
   waveDuration: 10
-  waveInterval: 5
+  waveInterval: 60
   centerController: {fileID: 890341968}
 --- !u!1001 &1224516472
 PrefabInstance:
