@@ -152,9 +152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ef7632fadddd624db92e476649db0f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enegyCost: 10
+  EnergyCost: 10
   energyGain: 5
-  energyInterval: 5
+  energyInterval: 20
   maxHealth: 100
   healthBar: {fileID: 5145094087404986163}
   healthBarOffset: {x: 0, y: 3, z: 0}
