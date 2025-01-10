@@ -50,10 +50,10 @@ public class Nut : MonoBehaviour, Damageable
     void Update()
     {
         healthBar.gameObject.SetActive(currentHealth < maxHealth);
-        if (transform.position.y >= 0.2)
-        {
-            transform.position += Vector3.down * Time.deltaTime * 9.8f; // �������O
-        }
+        // if (transform.position.y >= 0.2)
+        // {
+        //     transform.position += Vector3.down * Time.deltaTime * 9.8f; // �������O
+        // }
     }
 
     // �����G���������ɽեΦ���k

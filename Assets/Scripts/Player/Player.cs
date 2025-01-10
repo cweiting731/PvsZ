@@ -65,7 +65,8 @@ public class Player : MonoBehaviour
                     // Debug.Log($"prefab: {inventoryController.GetTool().prefab.name}");
                     if (inventoryController.GetItem() != null)
                     {
-                        placePosition.y = inventoryController.GetItem().prefab.transform.position.y;
+                        // placePosition.y = inventoryController.GetItem().prefab.transform.position.y;
+                        // placePosition.y = inventoryController.GetItem().prefab.transform.position.y;
                         Instantiate(inventoryController.GetItem().prefab, placePosition, Quaternion.identity);
                     }
                 }
