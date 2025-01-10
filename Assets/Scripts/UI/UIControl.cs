@@ -11,17 +11,22 @@ public class UIControl : MonoBehaviour
     public Button restart;
     public GameObject Canvas;
     public Button pause;
-
+    private CenterController gamecontrol;
     void Start()
     {
         system = EventSystem.current;
         Canvas.SetActive(false);
+        gamecontrol = FindObjectOfType<CenterController>();
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            if (gamecontrol != null && gamecontrol.CantPause())
+            {
+                return;
+            }
             if (isPaused)
             {
                 ResumeGame();

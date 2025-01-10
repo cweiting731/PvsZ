@@ -63,7 +63,7 @@ public class ZombieController : MonoBehaviour
         health = originalHealth;
         attack = originalAttack;
         SetState(State.Walk);
-        centerController = GameObject.Find("Center Controller").GetComponent<CenterController>();
+        centerController = GameObject.Find("GameControl").GetComponent<CenterController>();
         if (centerController == null) Debug.Log("Don't find the centerController");
         //TEST_TIMER = TEST_INTERVAL;
     }
