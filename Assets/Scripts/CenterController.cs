@@ -151,7 +151,7 @@ public class CenterController : MonoBehaviour
     {
         return cantPause;
     }
-    public void GenerateStars(int starCount)
+    /*public void GenerateStars(int starCount)
     {
         offset = new Vector3(0,1,1);
         // �M�Ť��e���P�P
@@ -167,5 +167,5 @@ public class CenterController : MonoBehaviour
             star.transform.localScale = offset; // �T�O�Y�񥿱`
             offset.x += 1;
         }
-    }
+    }*/
 }
