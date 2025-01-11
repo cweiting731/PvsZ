@@ -13,6 +13,11 @@ public class Player : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        int playerLayer = LayerMask.NameToLayer("player");
+        int bulletsLayer = LayerMask.NameToLayer("bullets");
+
+        // 忽略玩家和障礙物的碰撞
+        Physics.IgnoreLayerCollision(playerLayer, bulletsLayer, true);
     }
 
     void Update()
