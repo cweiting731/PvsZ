@@ -17,51 +17,53 @@
 * 滑鼠滾輪或數字鍵切換道具欄
 * ESC 暫停遊戲
 
-### 子彈 ATK : 20  
+### 子彈
+> ATK : 20
+> SPE : 20
 
 ## 殭屍種類
 * 普通殭屍 - 非常普通的殭屍
-  > HP : 
-  > ATK : 
-  > SPE :
-  > Energy Give : 
+  > HP : 100  
+  > ATK : 20  
+  > SPE : 0.5  
+  > Energy Give : 1  
 * 奔跑殭屍 - 移動速度較快，半血以下會爆衝
-  > HP : 
-  > ATK : 
-  > SPE :
-  > Energy Give : 
+  > HP : 80  
+  > ATK : 15  
+  > SPE : 0.75 (半血下 2.75)  
+  > Energy Give : 3  
 * 巨人殭屍 - 行走緩慢，攻擊力較高
-  > HP : 
-  > ATK : 
-  > SPE :
-  > Energy Give : 
+  > HP : 400  
+  > ATK : 25  
+  > SPE : 0.35  
+  > Energy Give : 10  
 * 礦工殭屍 - 從地下潛行，在此期間子彈攻擊不到礦工殭屍，到家門口之後會爬起來並往遠離家門口的方向前進
-  > HP : 
-  > ATK : 
-  > SPE :
-  > Energy Give : 
+  > HP : 120  
+  > ATK : 20  
+  > SPE : 0.5  
+  > Energy Give : 1  
 
 ## 道具種類
 * 向日葵 - 生產能量
-  > HP :
-  > Energy Cost :
-  > Energy Give : 
+  > HP : 100  
+  > Energy Cost : 10  
+  > Energy Give : 5 / 20s
 * 豌豆射手 - 固定間隔時間下朝前方射擊豌豆
-  > HP :
-  > Energy Cost :
-  > Attack Interval : 
+  > HP : 100  
+  > Energy Cost : 20  
+  > Attack Interval : 3s  
 * 食人花 - 固定間隔時間下吃下範圍內最接近的殭屍
-  > HP :
-  > Energy Cost :
-  > Attack Interval :
+  > HP : 100  
+  > Energy Cost : 30  
+  > Attack Interval : 5s  
 * 堅果牆 - 有較高的血量可以抵擋殭屍
-  > HP :
-  > Energy Cost :
+  > HP : 400  
+  > Energy Cost : 20  
 * 辣椒 - 放下後可以清空整條道路的殭屍，但不會返還殭屍死亡的能量
-  > Energy Cost : 
+  > Energy Cost : 50  
 * WannaPlayApex - 原測試用道具，修改後可以充當低配版堅果牆
-  > HP :
-  > Energy Cost :
+  > HP : 100  
+  > Energy Cost : 0
 
 ## 使用版本
 * Unity 6000.0.30f1
