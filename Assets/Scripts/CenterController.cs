@@ -33,7 +33,7 @@ public class CenterController : MonoBehaviour
         {
             LpCanvas.SetActive(false);
         }
-        GenerateStars(level);
+        //GenerateStars(level);
     }
 
     void Update()
