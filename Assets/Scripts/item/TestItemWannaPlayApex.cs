@@ -68,6 +68,10 @@ public class TestItemWannaPlayApex : MonoBehaviour, Damageable
             bc.enabled = false;
         }
         isDead = true;
+        if (transform.parent != null)
+        {
+            Destroy(transform.parent.gameObject);
+        }
         Destroy(healthBar.gameObject, 0.1f);
         Destroy(gameObject, 0.1f);
     }

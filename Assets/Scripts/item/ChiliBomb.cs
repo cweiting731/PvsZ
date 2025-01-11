@@ -46,9 +46,26 @@ public class ChiliBomb : MonoBehaviour, Damageable
                 Destroy(zombie);
             }
         }
-
+        GameObject[] items = GameObject.FindGameObjectsWithTag("item");
+        foreach (GameObject item in items)
+        {
+            // �p�G�L�ͦb�P�@�ơA�R����
+            if (Mathf.Abs(item.transform.position.x - bombX) <= 1.5f) // ���]�ƪ����פ��\�p�~�t
+            {
+                Transform parent = item.transform.parent;
+                Destroy(item);
+                if (parent != null)
+                {
+                    Destroy(parent.gameObject);
+                }
+            }
+        }
+        if (transform.parent != null)
+        {
+            Destroy(transform.parent.gameObject);
+            //Destroy(gameObject);
+        }
         // �R�����Ԭ��u
-        Destroy(gameObject);
     }
 
     IEnumerator FadeAndDestroyLight(Light light)
