@@ -95,7 +95,10 @@ public class Chomper : MonoBehaviour, Damageable
         {
             Destroy(healthBar.gameObject);
         }
-
+        if (transform.parent != null)
+        {
+            Destroy(transform.parent.gameObject);
+        }
         // ����R���ĪG�]�i��^
         Destroy(gameObject);
     }

@@ -86,6 +86,10 @@ public class PeaShooter : MonoBehaviour, Damageable
     {
         Debug.Log("�ܨ��g��Q�R��");
         thisCollider.enabled = false;
+        if (transform.parent != null)
+        {
+            Destroy(transform.parent.gameObject);
+        }
         Destroy(gameObject, 0.1f);
     }
 

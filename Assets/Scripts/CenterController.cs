@@ -18,6 +18,7 @@ public class CenterController : MonoBehaviour
     public Image starPrefab;
     public Transform starsContainer;
     private bool cantPause = false;
+    private Vector3 offset = Vector3.one;
     void Start()
     {
         if (gameOverCanvas != null)
@@ -152,6 +153,7 @@ public class CenterController : MonoBehaviour
     }
     public void GenerateStars(int starCount)
     {
+        offset = new Vector3(0,1,1);
         // �M�Ť��e���P�P
         foreach (Transform child in starsContainer)
         {
@@ -162,7 +164,8 @@ public class CenterController : MonoBehaviour
         for (int i = 0; i < starCount; i++)
         {
             Image star = Instantiate(starPrefab, starsContainer);
-            star.transform.localScale = Vector3.one; // �T�O�Y�񥿱`
+            star.transform.localScale = offset; // �T�O�Y�񥿱`
+            offset.x += 1;
         }
     }
 }

@@ -98,6 +98,11 @@ public class Nut : MonoBehaviour, Damageable
         //    collider.enabled = false;
         //}
         // ����P���A�����z������s
+        if (transform.parent != null)
+        {
+            Destroy(transform.parent.gameObject); 
+        }
+
         Destroy(healthBar.gameObject, 0.1f);
         Destroy(nutWall.gameObject, 0.1f);
     }

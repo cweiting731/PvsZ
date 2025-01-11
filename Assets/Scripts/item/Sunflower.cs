@@ -124,6 +124,10 @@ public class Sunflower : MonoBehaviour, Damageable
         {
             Destroy(healthBar.gameObject); // �R����q��
         }
+        if (transform.parent != null)
+        {
+            Destroy(transform.parent.gameObject);
+        }
         Destroy(gameObject); // �R���V�鸪
     }
 
