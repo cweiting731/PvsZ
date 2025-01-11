@@ -1292,7 +1292,7 @@ GameObject:
   - component: {fileID: 213245699}
   m_Layer: 0
   m_Name: AntiGround5
-  m_TagString: Untagged
+  m_TagString: AntiGround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2007,7 +2007,7 @@ GameObject:
   - component: {fileID: 522843228}
   m_Layer: 0
   m_Name: AntiGround4
-  m_TagString: Untagged
+  m_TagString: AntiGround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2430,7 +2430,7 @@ GameObject:
   - component: {fileID: 650310802}
   m_Layer: 0
   m_Name: AntiGround6
-  m_TagString: Untagged
+  m_TagString: AntiGround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2980,7 +2980,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 1
   energy: 100
-  health: 15
+  health: 100
   gameOverCanvas: {fileID: 1775969268}
   winCanvas: {fileID: 416876563}
   LpCanvas: {fileID: 1538956979}
@@ -4606,7 +4606,7 @@ GameObject:
   - component: {fileID: 1314668865}
   m_Layer: 0
   m_Name: AntiGround1
-  m_TagString: Untagged
+  m_TagString: AntiGround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5012,7 +5012,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.7, y: 2.05, z: 1.35}
-  m_LocalScale: {x: 55, y: 1, z: 1}
+  m_LocalScale: {x: 55, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -5353,7 +5353,7 @@ GameObject:
   - component: {fileID: 1575280441}
   m_Layer: 0
   m_Name: AntiGround3
-  m_TagString: Untagged
+  m_TagString: AntiGround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6067,7 +6067,7 @@ GameObject:
   - component: {fileID: 1815332465}
   m_Layer: 0
   m_Name: AntiGround2
-  m_TagString: Untagged
+  m_TagString: AntiGround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6366,7 +6366,7 @@ GameObject:
   - component: {fileID: 1953947440}
   m_Layer: 0
   m_Name: AntiGround
-  m_TagString: Untagged
+  m_TagString: AntiGround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

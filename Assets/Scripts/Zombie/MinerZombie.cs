@@ -86,11 +86,18 @@ public class MinerZombie : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!firstTouchGround && collision.gameObject.tag == "Ground")
+        if (!firstTouchGround && (collision.gameObject.tag == "Ground"))
         {
             rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
             backToGroundY = transform.position.y;
             transform.position += new Vector3(0, -1, 0) * 1.5f;
+            firstTouchGround = true;
+        }
+        if (!firstTouchGround &&collision.gameObject.tag == "AntiGround")
+        {
+            rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
+            backToGroundY = transform.position.y;
+            transform.position += new Vector3(0, -1, 0) * 1.8f;
             firstTouchGround = true;
         }
         if (collision.gameObject.tag == "Bullet")
@@ -106,7 +113,7 @@ public class MinerZombie : MonoBehaviour
             moveDirection = new Vector3(0, 0 , -1);
             return;
         }
-        if (isStand && collision.gameObject.tag != "Ground" && collision.gameObject.tag != "EndLine")
+        if (isStand && collision.gameObject.tag != "Ground" && collision.gameObject.tag != "AntiGround" && collision.gameObject.tag != "EndLine")
         {
             Debug.Log("OnCollisionEnter: " + collision.gameObject.name);
             speed = 0;
@@ -130,7 +137,7 @@ public class MinerZombie : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag != "Ground" && collision.gameObject.tag != "EndLine")
+        if (collision.gameObject.tag != "Ground" && collision.gameObject.tag != "AntiGround" && collision.gameObject.tag != "EndLine")
         {
             Debug.Log("OnCollisionExit: " + collision.gameObject.name);
             speed = originalSpeed;
