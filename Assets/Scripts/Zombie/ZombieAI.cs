@@ -99,7 +99,7 @@ public class ZombieController : MonoBehaviour
             centerController.DecreaseHealth();
             DeleteThis(false);
         }
-        if (collision.gameObject.tag != "Ground")
+        if (collision.gameObject.tag != "Ground" && collision.gameObject.tag != "AntiGround")
         {
             Debug.Log("OnCollisionEnter: " + collision.gameObject.name);
             speed = 0;
@@ -146,7 +146,7 @@ public class ZombieController : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag != "Ground")
+        if (collision.gameObject.tag != "Ground" && collision.gameObject.tag != "AntiGround")
         {
             Debug.Log("OnCollisionExit: " + collision.gameObject.name);
             speed = originalSpeed;
